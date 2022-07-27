@@ -1,0 +1,88 @@
+@use "../../settings" as *;
+@use "../../tools" as *;
+@use "./colors" as *;
+@use "./pallete" as *;
+
+$colors-light-root: (
+  --color-white: hsl(0, 0%, 100%),
+  --color-black: hsl(0, 0%, 0%),
+  --title-color: #{$title-color-light},
+  --text-color: #{$text-color-light},
+  --light-text-color: #{$light-text-color-light},
+  --lighter-text-color: #{$lighter-text-color-light},
+  --border-color: #{$border-color-light},
+  --divider-color: #{$divider-color-light},
+  // Colores para shadow x default 3 niveles
+    --shadow-color-1: #{$shadow-color-light-1},
+  --shadow-color-2: #{$shadow-color-light-2},
+  --shadow-color-3: #{$shadow-color-light-3},
+  // Color de fondo (background)
+    --bg-input-color: #{$bg-input-color-light},
+  --main-bg-color: #{$main-bg-color-light},
+  --second-bg-color: #{$second-bg-color-light},
+  // Main color pallete
+    --primary-light: #{$primary-light-lm},
+  --primary-main: #{$primary-main-lm},
+  --primary-dark: #{$primary-dark-lm},
+  --secondary-light: #{$secondary-light-lm},
+  --secondary-main: #{$secondary-main-lm},
+  --secondary-dark: #{$secondary-dark-lm},
+  --danger-light: #{$danger-light-lm},
+  --danger-main: #{$danger-main-lm},
+  --danger-dark: #{$danger-dark-lm},
+  --warning-light: #{$warning-light-lm},
+  --warning-main: #{$warning-main-lm},
+  --warning-dark: #{$warning-dark-lm},
+  --success-light: #{$success-light-lm},
+  --success-main: #{$success-main-lm},
+  --success-dark: #{$success-dark-lm},
+  --info-light: #{$info-light-lm},
+  --info-main: #{$info-main-lm},
+  --info-dark: #{$info-dark-lm},
+  // Color de scrollbar
+    --scroll-bar-color: #{$scroll-bar-color-light},
+  --scroll-thumb-color: #{$scroll-thumb-color-light},
+  --scroll-thumb-color-hover: #{$scroll-thumb-color-light-hover},
+);
+
+$colors-dark-root: (
+  --title-color: #{$title-color-dark},
+  --text-color: #{$text-color-dark},
+  --light-text-color: #{$light-text-color-dark},
+  --lighter-text-color: #{$lighter-text-color-dark},
+  --border-color: #{$border-color-dark},
+  --divider-color: #{$divider-color-dark},
+  // Color de fondo (background)
+    --bg-input-color: #{$bg-input-color-dark},
+  --main-bg-color: #{$main-bg-color-dark},
+  --second-bg-color: #{$second-bg-color-dark},
+  // Main color pallete
+    --primary-light: #{$primary-light-dm},
+  --primary-main: #{$primary-main-dm},
+  --primary-dark: #{$primary-dark-dm},
+  // Color de scrollbar
+    --scroll-bar-color: #{$scroll-bar-color-dark},
+  --scroll-thumb-color: #{$scroll-thumb-color-dark},
+  --scroll-thumb-color-hover: #{$scroll-thumb-color-dark-hover},
+);
+
+:root {
+  @each $name-color, $values in $palletes {
+    @each $key, $value in $values {
+      $selector: '--#{$name-color}-#{$key}';
+      #{$selector}: #{$value};
+    }
+  }
+}
+
+@each $size in $sizes {
+  $new-size: fn-convert-bp($size);
+
+  @each $name-color, $values in $palletes {
+    .SUI-u-pallete#{$new-size}-#{$name-color} {
+      @each $property, $value in $values {
+        --color-#{$property}: var(--#{$name-color}-#{$property});
+      }
+    }
+  }
+}

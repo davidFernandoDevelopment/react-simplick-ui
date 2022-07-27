@@ -1,0 +1,40 @@
+@use '../tools' as *;
+@use '../settings' as *;
+@use '../theme' as *;
+
+@each $size in $sizes {
+  $new-size: fn-convert-bp($size);
+
+  @include mx-from($size) {
+    @each $key, $value in $theme-colors {
+      @if length($value) > 1 {
+        .SUI-u-theme-color#{$new-size}-#{$key} {
+          @include mx-generate-declaration($value, '--');
+        }
+      }
+      @each $k, $v in $value {
+        @if length($value) > 1 {
+          .SUI-u-text#{$new-size}-#{$key}-#{$k} {
+            color: #{$v} !important;
+          }
+          .SUI-u-bg#{$new-size}-#{$key}-#{$k} {
+            background-color: #{$v} !important;
+          }
+          .SUI-u-border#{$new-size}-#{$key}-#{$k} {
+            border-color: #{$v} !important;
+          }
+        } @else {
+          .SUI-u-text#{$new-size}-#{$key} {
+            color: #{$value} !important;
+          }
+          .SUI-u-bg#{$new-size}-#{$key} {
+            background-color: #{$value} !important;
+          }
+          .SUI-u-border#{$new-size}-#{$key} {
+            border-color: #{$value} !important;
+          }
+        }
+      }
+    }
+  }
+}

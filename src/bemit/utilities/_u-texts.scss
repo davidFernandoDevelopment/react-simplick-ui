@@ -1,0 +1,98 @@
+@use '../tools' as *;
+
+$alias-text: (
+  ta: text-align,
+  tw: white-space,
+  tt: text-transform,
+  td: text-decoration,
+  fs: font-size,
+  fw: font-weight,
+);
+
+$text-properties: (
+  ta: (
+    left: (
+      text-align: left,
+    ),
+    center: (
+      text-align: center,
+    ),
+    right: (
+      text-align: right,
+    ),
+    justify: (
+      text-align: justify,
+    ),
+  ),
+  tw: (
+    wrap: (
+      white-space: normal,
+    ),
+    nowrap: (
+      white-space: nowrap,
+    ),
+  ),
+  tt: (
+    uppercase: (
+      text-transform: uppercase,
+    ),
+    lowercase: (
+      text-transform: lowercase,
+    ),
+    capitalize: (
+      text-transform: capitalize,
+    ),
+  ),
+  td: (
+    underline: (
+      text-decoration: underline,
+    ),
+    middle: (
+      text-decoration: line-through,
+    ),
+    none: (
+      text-decoration: none,
+    ),
+  ),
+  fs:
+    map-merge(
+      (
+        h1: (
+          font-size: var(--h1-font-size),
+        ),
+        h2: (
+          font-size: var(--h2-font-size),
+        ),
+        h3: (
+          font-size: var(--h3-font-size),
+        ),
+        normal: (
+          font-size: var(--normal-font-size),
+        ),
+        small: (
+          font-size: var(--small-font-size),
+        ),
+        smaller: (
+          font-size: var(--smaller-font-size),
+        ),
+      ),
+      fn-property-value-generator(fn-generate-spacers(), 'font-size')
+    ),
+  fw: (
+    normal: (
+      font-weight: var(--font-normal),
+    ),
+    medium: (
+      font-weight: var(--font-medium),
+    ),
+    semi-bold: (
+      font-weight: var(--font-semi-bold),
+    ),
+    bold: (
+      font-weight: var(--font-bold),
+    ),
+  ),
+);
+$text-total: fn-add-base-properties($text-properties, $alias-text);
+
+@include mx-generator-classes('from', ($text-total, '.SUI-u'));

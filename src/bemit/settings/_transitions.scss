@@ -1,0 +1,5 @@
+/// @group Settings
+
+$transition-cubic-scale: cubic-bezier(0.175, 0.885, 0.32, 1.275) !default;
+$transition-cubic-translate: cubic-bezier(0, 0, 0.2, 1) !default;
+$transition-cubic-transform-origin: cubic-bezier(0.4, 0, 0.2, 1) !default;

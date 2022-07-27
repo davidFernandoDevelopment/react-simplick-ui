@@ -1,0 +1,50 @@
+@use '../tools' as *;
+
+$alias-spacing: (
+  pt: 'padding-top',
+  pb: 'padding-bottom',
+  pr: 'padding-right',
+  pl: 'padding-left',
+  px: (
+    'padding-right',
+    'padding-left',
+  ),
+  py: (
+    'padding-top',
+    'padding-bottom',
+  ),
+  pxy: 'padding',
+  mr: 'margin-right',
+  ml: 'margin-left',
+  mt: 'margin-top',
+  mb: 'margin-bottom',
+);
+$positive-spacers: fn-generate-spacers();
+$negative-spacers: fn-generate-spacers(
+  $sign: '-',
+);
+
+$spacing-properties: (
+  pt: fn-property-value-generator($positive-spacers, 'padding-top'),
+  pb: fn-property-value-generator($positive-spacers, 'padding-bottom'),
+  pr: fn-property-value-generator($positive-spacers, 'padding-right'),
+  pl: fn-property-value-generator($positive-spacers, 'padding-left'),
+  px:
+    fn-property-value-generator(
+      $positive-spacers,
+      ('padding-right', 'padding-left')
+    ),
+  py:
+    fn-property-value-generator(
+      $positive-spacers,
+      ('padding-top', 'padding-bottom')
+    ),
+  pxy: fn-property-value-generator($positive-spacers, 'padding'),
+  mr: fn-property-value-generator($negative-spacers, 'margin-right'),
+  ml: fn-property-value-generator($positive-spacers, 'margin-left'),
+  mt: fn-property-value-generator($negative-spacers, 'margin-top'),
+  mb: fn-property-value-generator($positive-spacers, 'margin-bottom'),
+);
+$spacing-total: fn-add-base-properties($spacing-properties, $alias-spacing);
+
+@include mx-generator-classes('from', ($spacing-total, '.SUI-u'));

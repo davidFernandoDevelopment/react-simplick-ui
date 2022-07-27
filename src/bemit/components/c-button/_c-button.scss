@@ -1,0 +1,64 @@
+// @use "../../settings" as *;
+
+@use "../../tools" as *;
+@use 'c-button-settings' as *;
+
+$transition-button: box-shadow 0.2s ease-in-out,
+  background-color 0.2s ease-in-out, color 0.2s ease-in-out,
+  border-color 0.2s ease-in-out;
+
+.SUI-c-button {
+  gap: var(--button-gap);
+  font-weight: var(--font-medium);
+  padding: var(--padding);
+  border-radius: 0.25rem;
+  transition: $transition-button;
+
+  $b: &;
+
+  &:hover {
+    transition: $transition-button;
+    box-shadow: 2px 2px 4px var(--color-400, var(--shadow-color-1)),
+      2px 2px 6px var(--color-300, var(--shadow-color-2)),
+      0px 1px 8px var(--color-300, var(--shadow-color-3));
+
+    &#{$b}--disableElevation {
+      box-shadow: none;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    gap: var(--button-gap);
+
+    & > *:nth-of-type(1) {
+      font-size: var(--button-icon-font-size);
+    }
+  }
+
+  &--fullWidth {
+    width: 100%;
+  }
+
+  @at-root {
+    @include mx-generator-classes(
+      'from',
+      ($button-properties-bp, '.SUI-c-button-')
+    );
+    @include mx-generate-map-properties(
+      $button-properties-simple,
+      '.SUI-c-button-'
+    );
+    @include mx-generate-map-properties(
+      $button-properties-pseudoclasses,
+      '.SUI-c-button-',
+      ':hover'
+    );
+    @include mx-generate-map-properties(
+      $button-disabled,
+      '.SUI-c-button-',
+      '.SUI-c-button--disabled'
+    );
+  }
+}

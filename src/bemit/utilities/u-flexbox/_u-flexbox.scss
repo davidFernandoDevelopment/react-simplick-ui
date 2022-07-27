@@ -1,0 +1,110 @@
+@use '../../tools' as *;
+
+$name-alias-flex: (
+  fd: flex-direction,
+  jc: justify-content,
+  as: align-self,
+  ai: align-items,
+  ac: align-content,
+  fwrap: flex-wrap,
+  fshrink: flex-shrink,
+  fgrow: flex-grow,
+  order: order,
+  fg: gap,
+);
+$numeral-values: fn-generate-number(12);
+$spacer-values: fn-generate-spacers();
+
+$flex-properties: (
+  fd: (
+    row: (
+      flex-direction: row,
+    ),
+    row-reverse: (
+      flex-direction: row-reverse,
+    ),
+    column: (
+      flex-direction: column,
+    ),
+    column-reverse: (
+      flex-direction: column-reverse,
+    ),
+  ),
+  jc: (
+    start: (
+      justify-content: flex-start,
+    ),
+    center: (
+      justify-content: center,
+    ),
+    end: (
+      justify-content: flex-end,
+    ),
+    between: (
+      justify-content: space-between,
+    ),
+    around: (
+      justify-content: space-around,
+    ),
+    distribute: (
+      justify-content: space-evenly,
+    ),
+  ),
+  ai: (
+    baseline: (
+      align-items: baseline,
+    ),
+    start: (
+      align-items: flex-start,
+    ),
+    center: (
+      align-items: center,
+    ),
+    end: (
+      align-items: flex-end,
+    ),
+  ),
+  ac: (
+    baseline: (
+      align-content: baseline,
+    ),
+    start: (
+      align-content: flex-start,
+    ),
+    center: (
+      align-content: center,
+    ),
+    end: (
+      align-content: flex-end,
+    ),
+  ),
+  as: (
+    start: (
+      align-self: flex-start,
+    ),
+    center: (
+      align-self: center,
+    ),
+    end: (
+      align-self: flex-end,
+    ),
+  ),
+  fwrap: (
+    wrap: (
+      flex-wrap: wrap,
+    ),
+    wrap-reverse: (
+      flex-wrap: wrap-reverse,
+    ),
+    no-wrap: (
+      flex-wrap: nowrap,
+    ),
+  ),
+  fshrink: fn-property-value-generator($numeral-values, 'flex-shrink'),
+  fgrow: fn-property-value-generator($numeral-values, 'flex-grow'),
+  order: fn-property-value-generator($numeral-values, 'order'),
+  fg: fn-property-value-generator($spacer-values, 'gap'),
+);
+$flex-total: fn-add-base-properties($flex-properties, $name-alias-flex);
+
+@include mx-generator-classes('from', ($flex-total, '.SUI-u'));

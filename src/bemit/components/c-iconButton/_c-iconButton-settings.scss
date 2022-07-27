@@ -1,0 +1,27 @@
+$iconButton-properties-simple: (
+  variant: (
+    circle: (
+      border-radius: 50%,
+    ),
+    square: (
+      border-radius: 10px,
+    ),
+  ),
+);
+
+$iconButton-properties-bp: (
+  size: (
+    small: (
+      --icon-button-font-size: 20px,
+    ),
+    normal: (
+      --icon-button-font-size: 24px,
+    ),
+    large: (
+      --icon-button-font-size: 32px,
+    ),
+    xlarge: (
+      --icon-button-font-size: 40px,
+    ),
+  ),
+);

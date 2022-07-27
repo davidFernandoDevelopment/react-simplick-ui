@@ -1,0 +1,65 @@
+@use "./pallete" as *;
+
+// LIGHT-MODE
+
+$title-color-light: map-get($gray, '700');
+$text-color-light: map-get($gray, '600');
+$light-text-color-light: map-get($gray, '500');
+$lighter-text-color-light: map-get($gray, '400');
+$border-color-light: map-get($gray, '300');
+$divider-color-light: map-get($gray, '500');
+// Colores para shadow x default 3 niveles
+$shadow-color-light-1: map-get($gray, '500');
+$shadow-color-light-2: map-get($gray, '400');
+$shadow-color-light-3: map-get($gray, '400');
+// Color de fondo (background)
+$bg-input-color-light: map-get($gray, '200');
+$main-bg-color-light: map-get($gray, '300');
+$second-bg-color-light: map-get($gray, '100');
+// Main color pallete
+$primary-light-lm: map-get($blue, '500');
+$primary-main-lm: map-get($blue, '600');
+$primary-dark-lm: map-get($blue, '700');
+$secondary-light-lm: map-get($gray, '400');
+$secondary-main-lm: map-get($gray, '500');
+$secondary-dark-lm: map-get($gray, '600');
+$danger-light-lm: map-get($red, '400');
+$danger-main-lm: map-get($red, '500');
+$danger-dark-lm: map-get($red, '600');
+$warning-light-lm: map-get($yellow, '400');
+$warning-main-lm: map-get($yellow, '500');
+$warning-dark-lm: map-get($yellow, '600');
+$success-light-lm: map-get($green, '400');
+$success-main-lm: map-get($green, '500');
+$success-dark-lm: map-get($green, '600');
+$info-light-lm: map-get($blue, '400');
+$info-main-lm: map-get($blue, '500');
+$info-dark-lm: map-get($blue, '600');
+// Color de scrollbar
+$scroll-bar-color-light: map-get($gray, '100');
+$scroll-thumb-color-light: map-get($gray, '400');
+$scroll-thumb-color-light-hover: map-get($gray, '500');
+
+//---------------------------- DARK-MODE --------------------------------------------------------
+
+$title-color-dark: map-get($gray, '300');
+$text-color-dark: map-get($gray, '400');
+$light-text-color-dark: map-get($gray, '500');
+$lighter-text-color-dark: map-get($gray, '600');
+$border-color-dark: map-get($gray, '700');
+$divider-color-dark: map-get($gray, '200');
+
+// Color de fondo (background)
+$bg-input-color-dark: map-get($gray, '700');
+$main-bg-color-dark: map-get($gray, '900');
+$second-bg-color-dark: map-get($gray, '800');
+
+// Main color-dark pallete
+$primary-light-dm: map-get($blue, '300');
+$primary-main-dm: map-get($blue, '400');
+$primary-dark-dm: map-get($blue, '700');
+
+// Color-dark de scrollbar
+$scroll-bar-color-dark: map-get($gray, '400');
+$scroll-thumb-color-dark: map-get($gray, '500');
+$scroll-thumb-color-dark-hover: map-get($gray, '200');

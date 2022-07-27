@@ -1,0 +1,25 @@
+@use '../../settings' as *;
+
+////
+/// @group Tools
+/// @access private
+/// @author David Sanchez
+////
+
+/// Sobreescribe el metodo fn-hsl de sass. EVITAMOS hsl => HEX.
+@function hsl($h, $s, $l) {
+  @return unquote('hsl(#{$h}, #{$s}, #{$l})');
+}
+
+/// Generar sombras
+/// @param {List} `$l1 and $l2 and $l3` - valores de sombra.
+@function fn-generate-shadow($l1, $l2, $l3) {
+  $res: #{$l1} #{var(--shadow-color-1)}, #{$l2} #{var(--shadow-color-2)},
+    #{$l3} #{var(--shadow-color-3)};
+
+  @if not $l1 and not $l2 and not $l3 {
+    $res: none;
+  }
+
+  @return $res;
+}

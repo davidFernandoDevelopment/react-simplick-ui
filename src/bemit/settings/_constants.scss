@@ -1,0 +1,10 @@
+/// @group Settings
+
+$CSS_ALIGNS: (left, right, center);
+$CSS_DIRECTIONS: (top, right, bottom, left);
+$CSS_CORNERS: (
+  tl: top-left,
+  tr: top-right,
+  bl: bottom-left,
+  br: bottom-right,
+);

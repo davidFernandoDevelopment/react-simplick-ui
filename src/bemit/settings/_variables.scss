@@ -1,0 +1,54 @@
+@use "./z-index" as *;
+@use "./layout" as *;
+@use "./generics" as *;
+@use "./transitions" as *;
+
+$setting-root: (
+  xxs: (
+    // Z-INDEX
+      --z-negative: #{$z-negative},
+    --z-normal: #{$z-normal},
+    --z-appbar: #{$z-appbar},
+    --z-drawer: #{$z-drawer},
+    --z-modal: #{$z-modal},
+    --z-snackbar: #{$z-snackbar},
+    --z-tooltip: #{$z-tooltip},
+    // LAYOUT
+      --width-scrollbar: #{$width-scrollbar},
+    --border-scrollbar: #{$border-scrollbar},
+    --l-unit: $spacer,
+    --gap: $spacer * 2,
+    --num-columns: #{$num-columns-mobile},
+    --grid-gutter: #{$grid-gutter-mobile},
+    --padding-container: #{$padding-container-mobile},
+    // CUSTOM PROJECT
+      --topnav-height: $topnav-height,
+    --bottomnav-height: $bottomnav-height,
+    --breadcrumb-height: $breadcrumb-height,
+    --sidebar-width: $sidebar-width,
+    --sidebar-width-collapse: $sidebar-width-collapse,
+    // ICONS
+      --font-size-icon-main: $font-size-icon-main,
+    --font-size-icon-second: $font-size-icon-second,
+    --icon-small: $icon-small,
+    --icon-normal: $icon-normal,
+    --icon-large: $icon-large,
+    --icon-xlarge: $icon-xlarge,
+    --border-radius: $border-radius,
+    // TRANSITIONS
+      --transition-cubic-scale: $transition-cubic-scale,
+    --transition-cubic-translate: $transition-cubic-translate,
+    --transition-cubic-transform-origin: $transition-cubic-transform-origin,
+  ),
+  md: (
+    // LAYOUT
+      --num-columns: #{$num-columns-tablet},
+    --padding-container: #{$padding-container-tablet},
+  ),
+  lg: (
+    // LAYOUT
+      --num-columns: #{$num-columns-desktop},
+    --grid-gutter: #{$grid-gutter-desktop},
+    --padding-container: #{$padding-container-desktop},
+  ),
+);

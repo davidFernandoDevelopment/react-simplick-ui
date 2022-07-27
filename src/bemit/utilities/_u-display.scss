@@ -1,0 +1,35 @@
+@use '../tools' as *;
+
+$alias-display: (
+  d: display,
+);
+
+$display-properties: (
+  d: (
+    none: (
+      display: none '!important',
+    ),
+    block: (
+      display: block '!important',
+    ),
+    inline: (
+      display: inline '!important',
+    ),
+    flex: (
+      display: flex '!important',
+    ),
+    inline-flex: (
+      display: inline-flex '!important',
+    ),
+    grid: (
+      display: grid '!important',
+    ),
+    inline-grid: (
+      display: inline-grid '!important',
+    ),
+  ),
+);
+
+$display-total: fn-add-base-properties($display-properties, $alias-display);
+
+@include mx-generator-classes('from', ($display-total, '.SUI-u'));

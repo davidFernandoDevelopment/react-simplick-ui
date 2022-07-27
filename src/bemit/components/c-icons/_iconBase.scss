@@ -1,0 +1,38 @@
+@use "../../tools" as *;
+
+$iconBase-properties: (
+  size: (
+    xsmall: (
+      font-size: fn-calculate-rem(16px),
+    ),
+    small: (
+      font-size: fn-calculate-rem(20px),
+    ),
+    normal: (
+      font-size: fn-calculate-rem(24px),
+    ),
+    large: (
+      font-size: fn-calculate-rem(32px),
+    ),
+    xlarge: (
+      font-size: fn-calculate-rem(40px),
+    ),
+  ),
+);
+
+.SUI-c-iconBase {
+  user-select: none;
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  @at-root {
+    @include mx-generator-classes(
+      'from',
+      ($iconBase-properties, '.SUI-c-iconBase-')
+    );
+  }
+}

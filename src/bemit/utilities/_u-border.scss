@@ -1,0 +1,35 @@
+@use '../settings/constants' as *;
+@use '../tools' as *;
+
+$BORDER_STYLE: 'solid', 'dashed', 'dotted', 'double', 'groove', 'hidden';
+$BORDER_DEFAULT: (
+  '': '#{1px solid var(--border-color)}',
+  'none': none,
+);
+
+$alias-border: fn-map-merge-modified(
+  fn-generate-alias(
+    ('border%', 'border%-width', 'border%-style'),
+    $CSS_DIRECTIONS
+  ),
+  fn-generate-alias('border%-radius', $CSS_CORNERS)
+);
+$value-spacers: fn-generate-spacers();
+
+$border-properties: fn-map-merge-modified(
+  fn-property-generator('border%', $BORDER_DEFAULT, $CSS_DIRECTIONS),
+  fn-property-generator('border%-style', $BORDER_STYLE, $CSS_DIRECTIONS),
+  fn-property-generator('border%-width', $value-spacers, $CSS_DIRECTIONS),
+  fn-property-generator('border%-radius', $value-spacers, $CSS_CORNERS),
+  (
+    border-radius: (
+      50: (
+        border-radius: 50%,
+      ),
+    ),
+  )
+);
+
+$border-total: fn-add-base-properties($border-properties, $alias-border);
+
+@include mx-generator-classes('from', ($border-total, '.SUI-u'));

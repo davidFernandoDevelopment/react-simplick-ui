@@ -1,0 +1,131 @@
+/* LAYOUT FLEX: SIEMPRE EL FLEX-CONTAINER DEBE ESTAR DENTRO DE UN CONTAINER */
+
+@use "sass:math";
+@use "../../settings" as *;
+@use "../../tools" as *;
+
+$container: 'row';
+$item: 'col';
+
+@mixin container {
+  --gap-x: #{var(--grid-gutter)};
+  --gap-y: #{var(--grid-gutter)};
+
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 calc(var(--gap-x) * -0.5);
+  margin-top: calc(var(--gap-y) * -1);
+
+  & > * {
+    padding: 0 calc(var(--gap-x) * 0.5);
+    margin-top: var(--gap-y);
+
+    max-width: 100%;
+    min-width: 0; // Para evitar desbordamientos.
+  }
+}
+
+@mixin item($size: 1, $columns: 12) {
+  width: #{math.div($size, $columns) * 100%};
+  flex: 0 0 auto;
+}
+
+@mixin row-cols($count) {
+  > * {
+    flex: 0 0 auto;
+    width: #{math.div(100%, $count)};
+  }
+}
+
+.SUI-o-#{$container} {
+  @include container;
+}
+
+.SUI-o-#{$item} {
+  @each $size in $sizes {
+    @include mx-from($size) {
+      @if $size == xxs or $size==xs {
+        @include item(1, $num-columns-mobile);
+      } @else if $size == sm or $size==md {
+        @include item(1, $num-columns-tablet);
+      } @else {
+        @include item(1, $num-columns-desktop);
+      }
+    }
+  }
+}
+
+@each $size in $sizes {
+  @include mx-from($size) {
+    @if $size == xxs or $size==xs {
+      @for $i from 0 through $num-columns-mobile {
+        $new-i: if($i > 0, $i, 'none');
+        $new-val: if($i > 0, #{math.div(100%, $num-columns-mobile) * $i}, 0);
+        $new-size: fn-convert-bp($size);
+
+        @if $i > 0 {
+          .SUI-o-#{$item}#{$new-size}-#{$i} {
+            @include item($i, $num-columns-mobile);
+          }
+          .SUI-o-#{$container}-cols#{$new-size}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+
+        .SUI-o-col-push#{$new-size}-#{$new-i} {
+          margin-left: #{$new-val};
+        }
+      }
+    } @else if $size == sm or $size==md {
+      @for $i from 0 through $num-columns-tablet {
+        $new-i: if($i > 0, $i, 'none');
+        $new-val: if($i > 0, #{math.div(100%, $num-columns-tablet) * $i}, 0);
+
+        @if $i > 0 {
+          .SUI-o-#{$item}-#{$size}-#{$i} {
+            @include item($i, $num-columns-tablet);
+          }
+          .SUI-o-#{$container}-cols-#{$size}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+
+        .SUI-o-col-push-#{$size}-#{$new-i} {
+          margin-left: #{$new-val};
+        }
+      }
+    } @else {
+      @for $i from 0 through $num-columns-desktop {
+        $new-i: if($i > 0, $i, 'none');
+        $new-val: if($i>0, #{math.div(100%, $num-columns-desktop) * $i}, 0);
+
+        @if $i > 0 {
+          .SUI-o-#{$item}-#{$size}-#{$i} {
+            @include item($i, $num-columns-desktop);
+          }
+          .SUI-o-#{$container}-cols-#{$size}-#{$i} {
+            @include row-cols($i);
+          }
+        }
+
+        .SUI-o-col-push-#{$size}-#{$new-i} {
+          margin-left: #{$new-val};
+        }
+      }
+    }
+  }
+}
+
+@each $size in $sizes {
+  $new-size: fn-convert-bp($size);
+
+  @include mx-from($size) {
+    .SUI-o-g {
+      @include mx-generate-spacers(#{$new-size}, ('--gap-y', '--gap-x'));
+      @include mx-generate-spacers('x#{$new-size}', '--gap-x');
+      @include mx-generate-spacers('y#{$new-size}', '--gap-y');
+    }
+  }
+}
+
+/* LAYOUT FLEX */

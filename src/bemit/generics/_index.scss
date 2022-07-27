@@ -1,0 +1,52 @@
+@use "../settings" as *;
+@use "../theme" as *;
+@use "../tools/mixins" as *;
+
+
+:root {
+  @include mx-declaration-for-breakpoints($setting-root);
+  @include mx-declaration-for-breakpoints($font-size-root);
+  @include mx-generate-declaration($colors-light-root);
+
+  .#{$dark-theme} {
+    @include mx-generate-declaration($colors-dark-root);
+  }
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    outline: none;
+  }
+
+  // scroll-behavior: smooth;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-scrollbar {
+  width: var(--width-scrollbar);
+  background-color: var(--scroll-bar-color);
+  border-radius: var(--border-scrollbar);
+
+  @include mx-to(sm) {
+    display: none;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scroll-thumb-color);
+  border-radius: var(--border-scrollbar);
+
+  &:hover {
+    background-color: var(--scroll-thumb-color-hover);
+  }
+}

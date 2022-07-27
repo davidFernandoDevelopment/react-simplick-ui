@@ -1,0 +1,93 @@
+@use "../settings" as *;
+@use "../tools" as *;
+
+/* LAYOUT WITH GRID */
+
+.SUI-o-grid {
+  display: grid;
+  grid-template-columns: 100%;
+  column-gap: var(--gap);
+
+  margin-right: 0;
+  margin-left: 0;
+  max-width: 100%;
+  width: 100%;
+
+  @each $size in $sizes {
+    @if $size == nth($sizes, 1) {
+      @for $i from 0 through 4 {
+        &.SUI-o-gap-#{$i} {
+          --gap: #{$spacer * $i};
+        }
+      }
+
+      @for $i from 1 through $num-columns-desktop {
+        // Columnas del grid
+        &.SUI-o-grid-#{$i} {
+          grid-template-columns: repeat($i, 1fr);
+        }
+
+        // Columnas que ocuparan los items
+        > .SUI-o-cols-#{$i} {
+          grid-column-end: span $i;
+        }
+
+        // Filas que ocuparan los items
+        > .SUI-o-rows-#{$i} {
+          grid-row-end: span $i;
+        }
+
+        // Inicio de columna en items
+        > .SUI-o-x-#{$i} {
+          grid-column-start: $i;
+        }
+
+        // Incio de fila en items
+        > .SUI-o-y-#{$i} {
+          grid-row-start: $i;
+        }
+      }
+    } @else {
+      @include mx-from($size) {
+        @for $i from 0 through 4 {
+          &.SUI-o-gap-#{$size}-#{$i} {
+            --gap: #{$spacer * $i};
+          }
+        }
+
+        @for $i from 1 through $num-columns-desktop {
+          // Columnas del grid
+          &.SUI-o-grid-#{$size}-#{$i} {
+            grid-template-columns: repeat($i, 1fr);
+          }
+
+          // Columnas que ocuparan los items
+          > .SUI-o-cols-#{$size}-#{$i} {
+            grid-column-end: span $i;
+          }
+
+          // Filas que ocuparan los items
+          > .SUI-o-rows-#{$size}-#{$i} {
+            grid-row-end: span $i;
+          }
+
+          // Inicio de columna en items
+          > .SUI-o-x-#{$size}-#{$i} {
+            grid-column-start: $i;
+          }
+
+          // Incio de fila en items
+          > .SUI-o-y-#{$size}-#{$i} {
+            grid-row-start: $i;
+          }
+        }
+      }
+    }
+  }
+
+  &.SUI-o-row-gap {
+    row-gap: var(--gap);
+  }
+}
+
+/* LAYOUT WITH GRID */

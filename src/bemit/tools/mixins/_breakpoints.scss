@@ -1,0 +1,128 @@
+@use '../../settings' as *;
+@use '../functions' as *;
+
+////
+/// @group Tools
+/// @author David Sanchez
+////
+
+/// Hasta el punto de interrupcion.
+/// @param {String | Number} $bp - Breakpoint que se tomara como máximo.
+
+@mixin mx-to($bp) {
+  @if fn-is-core-breakpoint($bp) {
+    @if $bp == nth($sizes, 1) {
+      @content;
+    } @else {
+      @media screen and (max-width: fn-get-breakpoint($bp)) {
+        @content;
+      }
+    }
+  } @else if fn-is-breakpoint-valid($bp) {
+    @media screen and (max-width: $bp) {
+      @content;
+    }
+  } @else {
+    @error 'El mixin solo recibe: [#{$sizes}], o un numero en px, em o rem';
+  }
+}
+
+/// Desde el punto de interrupcion.
+/// @param {String | Number} $bp - Breakpoint que se tomara como minimo.
+
+@mixin mx-from($bp) {
+  @if fn-is-core-breakpoint($bp) {
+    @if $bp == nth($sizes, 1) {
+      @content;
+    } @else {
+      @media screen and (min-width: fn-get-breakpoint($bp)) {
+        @content;
+      }
+    }
+  } @else if fn-is-breakpoint-valid($bp) {
+    @media screen and (min-width: $bp) {
+      @content;
+    }
+  } @else {
+    @error 'El mixin solo recibe: [#{$sizes}], o un numero en px, em o rem';
+  }
+}
+
+/// Entre el intervalo
+/// @param {String | Number} $from - Breakpoint que se tomara como minimo.
+/// @param {String | Number} $to - Breakpoint que se tomara como máximo.
+
+@mixin mx-fromTo($from, $to) {
+  @if fn-is-core-breakpoint($from) and fn-is-core-breakpoint($to) {
+    @if fn-get-breakpoint($to) > fn-get-breakpoint($from) {
+      @media screen and (min-width: fn-get-breakpoint($from)) and (max-width: #{fn-get-breakpoint($to) - 0.1}) {
+        @content;
+      }
+    } @else {
+      @error 'El segundo argumento debe ser mayor';
+    }
+  } @else if fn-is-core-breakpoint($from) and not fn-is-core-breakpoint($to) {
+    @if fn-is-breakpoint-valid($to) {
+      @if fn-to-px($to) > fn-to-px(fn-get-breakpoint($from)) {
+        @media screen and (min-width: fn-get-breakpoint($from)) and (max-width: fn-to-px($to)) {
+          @content;
+        }
+      } @else {
+        @error 'El segundo argumento debe ser mayor';
+      }
+    } @else {
+      @error "El segundo argumento debe ser: [#{$sizes}]";
+    }
+  } @else if not fn-is-core-breakpoint($from) and fn-is-core-breakpoint($to) {
+    @if fn-is-breakpoint-valid($from) {
+      @if fn-to-px(fn-get-breakpoint($to)) > fn-to-px($from) {
+        @media screen and (min-width: fn-to-px($from)) and (max-width: fn-get-breakpoint($to)) {
+          @content;
+        }
+      } @else {
+        @error 'El primer argumento debe ser mayor';
+      }
+    } @else {
+      @error "El primer argumento debe ser: [#{$sizes}]";
+    }
+  } @else {
+    @error 'El mixin solo recibe: [#{$sizes}], o un numero en px, em o rem';
+  }
+}
+
+/// Caso especifico para el mixin fronTo, solo se toma 1 región de los breakpoints.
+/// @param {String | Number} $bp - Breakpoint especifico.
+
+@mixin mx-only($bp) {
+  @if fn-is-core-breakpoint($bp) {
+    @if $bp != nth($sizes, length($sizes)) {
+      $index: index($sizes, $bp);
+      $bp-next: nth($sizes, $index + 1);
+
+      @include mx-fromTo($bp, $bp-next) {
+        @content;
+      }
+    } @else {
+      @include mx-from($bp) {
+        @content;
+      }
+    }
+  } @else {
+    @error 'El mixin solo recibe: [#{$sizes}]';
+  }
+}
+
+/// Añade el tipo de la capa de la arquitectura ITCSS en las clases.
+/// @param {String} $prefix 'o' - Prefijo que representa la capa de ITCSS.
+/// @param {String} $sufix - Sufijo que se añadirá al nombre del selector.
+
+@mixin mx-breakpoints($prefix: 'o', $sufix: '') {
+  @each $size in $sizes {
+    $new-size: fn-convert-bp($size);
+    @include mx-from($size) {
+      .#{$prefix}#{$new-size}#{$sufix} {
+        @content;
+      }
+    }
+  }
+}

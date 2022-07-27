@@ -1,0 +1,192 @@
+@use "sass:math";
+@use "../../settings" as *;
+@use "./texts" as *;
+
+////
+/// @group Tools
+/// @access private
+/// @author David Sanchez
+////
+
+/// Establecer valores a la(s) propiedad(es).
+/// @param {String | List} $properties - Propiedad o propiedades a los que se les aplicaran el valor.
+/// @param {Number | String | Boolean} $value - Valores que seran asignados a la(s) propiedad(es).
+/// @return {Map} - Mapa de propiedad(es) - valor.
+
+@function fn-set-properties($properties, $value) {
+  $res: ();
+  @if (length($properties) > 1) {
+    @each $property in $properties {
+      $res: map-merge($res, (#{$property}: $value));
+    }
+  } @else {
+    $res: (#{$properties}: $value);
+  }
+
+  @return $res;
+}
+
+/// Función generadora de mapa de valores para una propiedad.
+/// @param {List | Map} $object - Conjunto de valores, puede ser en una lista o mapa.
+/// @param {String} $property - Propiedad CSS.
+/// @return {Map} - Mapa de valores para una propiedad.
+
+@function fn-property-value-generator($object, $property) {
+  $res: ();
+
+  @each $key, $value in $object {
+    $new-value: if($value == null, $key, $value);
+    $new-map: (
+      $key: fn-set-properties($property, $new-value),
+    );
+
+    $res: map-merge($res, $new-map);
+  }
+
+  @return $res;
+}
+
+/// @param {String} $property - Propiedad CSS que se quiere generar, puede incluir
+/// el caracter '%' que será reemplazado por los valores de la lista $option.
+/// @param {List | Map} $object () - Conjunto de valores con los que se formara un mapa junto con $property.
+/// @param {List} $option () - Conjunto de valores que reemplazaran el caracter '%' de property.
+/// @return {Map} - Mapa de propiedades.
+
+@function fn-property-generator($property, $object: (), $options: ()) {
+  $res: ();
+  $replace: fn-str-replace($property, '%', '');
+  $res: (#{$replace}: fn-property-value-generator($object, $replace));
+
+  @each $opt in $options {
+    $new-property: '';
+    $new-map: ();
+
+    @if type-of($opt) == 'list' {
+      // Hay alias de nombres (tl => top-left, etc).
+      $temp: fn-str-replace($property, '%', '-#{nth($opt, 2)}');
+      $new-property: fn-str-replace($property, '%', '-#{nth($opt, 1)}');
+      $new-map: fn-property-value-generator($object, $temp);
+    } @else {
+      $new-property: fn-str-replace($property, '%', '-#{$opt}');
+      $new-map: fn-property-value-generator($object, $new-property);
+    }
+
+    $res: map-merge($res, (#{$new-property}: $new-map));
+  }
+
+  @return $res;
+}
+
+/// Función generadora de numeros para selectores que lo requieran
+/// @param {String} $num - Limite de os valores numericos.
+/// @param {String} $multiplier - Multiplicador puede ser en %.
+/// @return {Map} - Mapa de key: numero  y value: numero | porcentaje.
+
+@function fn-generate-number($num, $multiplier: 1) {
+  $object: ();
+  @for $i from 1 through $num {
+    $selector: if(
+      unit($multiplier) == '%',
+      #{math.div($i * $multiplier, 1%)},
+      #{$i * $multiplier}
+    );
+    $value: $i * $multiplier;
+
+    $object: map-merge($object, (#{$selector}: $value));
+  }
+
+  @return $object;
+}
+
+/// Función generadora de unidades [0, 0.125, 0.25, ..., 6] x 0.5rem
+/// @param {String} $sign - Signo de la unidad
+/// @return {Map}  Devuelve mapa con key: unidades y value: con unidades rem.
+
+@function fn-generate-spacers($sign: '+') {
+  $object: ();
+
+  @for $i from 0 through 14 {
+    $unit: $spacer * $i;
+
+    $key: $i;
+
+    @if $i == 0 {
+      $unit: 0;
+    }
+    @if $i == 7 {
+      $unit: $spacer * 0.125;
+      $key: '0-125';
+    }
+    @if $i == 8 {
+      $unit: $spacer * 0.25;
+      $key: '0-25';
+    }
+    @if $i == 9 {
+      $unit: $spacer * 0.5;
+      $key: '0-5';
+    }
+    @if $i == 10 {
+      $unit: 3 * $spacer * 0.25;
+      $key: '0-75';
+    }
+    @if $i == 11 {
+      $unit: $spacer * 1.25;
+      $key: '1-25';
+    }
+    @if $i == 12 {
+      $unit: $spacer * 1.5;
+      $key: '1-5';
+    }
+    @if $i == 13 {
+      $unit: $spacer * 1.75;
+      $key: '1-75';
+    }
+    @if $i == 14 {
+      $unit: $spacer * 2.5;
+      $key: '2-5';
+    }
+
+    $unit: if($sign == '+', $unit, $unit * -1);
+
+    $object: map-merge($object, (#{$key}: $unit));
+  }
+
+  @return $object;
+}
+
+/// Función que genera un mapa de alias (alias: propiedad(es) en CSS)
+/// @param {List} $alias - alias de propiedad
+/// @param {List} $options - Lista de opaciones que reemplazaran el caracter '%' de alias
+/// @return {Map} - Mapa de alias.
+@function fn-generate-alias($alias, $options) {
+  $res-map: ();
+
+  @each $as in $alias {
+    $res: (#{fn-str-replace($as, '%', '')}: fn-str-replace($as, '%', ''));
+
+    @each $key, $value in $options {
+      $new-as: fn-str-replace($as, '%', '-#{$key}');
+      $new-as-1: if($value, fn-str-replace($as, '%', '-#{$value}'), $new-as);
+
+      $res: map-merge($res, (#{$new-as}: $new-as-1));
+    }
+    $res-map: map-merge($res-map, $res);
+  }
+
+  @return $res-map;
+}
+
+/// Función modificadora de la función nativa map-merge de sass.
+/// Acepta multiples mapas para mergearlos.
+/// @param {List} $args - Lista de mapas por unir.
+/// @return {Map} - Mapa unificado.
+
+@function fn-map-merge-modified($args...) {
+  $res: ();
+
+  @each $map in $args {
+    $res: map-merge($res, $map);
+  }
+
+  @return $res;
+}

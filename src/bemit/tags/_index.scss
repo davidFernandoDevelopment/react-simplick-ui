@@ -1,0 +1,114 @@
+@use "../tools" as *;
+@use "../theme" as *;
+
+/* ---------------- TAGS (BASE) ---------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @include normal;
+  background-color: var(--main-bg-color);
+  min-height: 100vh;
+
+  &.has-modal {
+    overflow: hidden;
+  }
+  @include mx-from(sm) {
+    &.has-modal {
+      padding-right: var(--width-scrollbar);
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: var(--vertical-content-space);
+}
+
+h1 {
+  @include t1;
+  margin-bottom: calc(var(--vertical-content-space) * 1.5);
+}
+
+h2 {
+  @include t2;
+}
+
+h3 {
+  @include t3;
+}
+
+h4 {
+  @include t4;
+}
+
+h5 {
+  @include t5;
+}
+
+h6 {
+  @include t6;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    color: var(--main-color);
+  }
+}
+
+img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+  color: var(--text-color);
+}
+input {
+  border: 2px solid var(--border-color);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: var(--second-bg-color);
+}
+
+tr {
+  text-align: left;
+}
+
+th,
+td {
+  text-transform: capitalize;
+  padding: 12px 8px;
+}
+
+/* ---------------- TAGS (BASE) ---------------- */

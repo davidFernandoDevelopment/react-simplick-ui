@@ -1,0 +1,84 @@
+@use "../../settings" as *;
+
+////
+/// @group Tools
+/// @access private
+/// @author David Sanchez
+////
+
+/// Verificar si el breakpoint es parte del core.
+/// @param {String} $bp - Breakpoint que se va a verificar
+/// @return {Boolean}
+
+@function fn-is-core-breakpoint($bp) {
+  @if index($sizes, $bp) {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+/// Verificar si el breakpoint (px, rem o em) es valido
+/// @param {Number} $bp - Breakpoint que se analizara
+/// @return {Boolean}
+
+@function fn-is-breakpoint-valid($bp) {
+  @if type-of($bp) ==
+    number and
+    (unit($bp) == 'px' or unit($bp) == 'em' or unit($bp) == 'rem')
+  {
+    @return true;
+  } @else {
+    @return false;
+  }
+}
+
+/// Obtener un breakpoint del core
+/// @param {String} $bp - Alias del brekpoint que se quiere obtener
+/// @return {Number}
+
+@function fn-get-breakpoint($alias-bp) {
+  @return map-get($breakpoints, $alias-bp);
+}
+
+/// Agregar propiedades bases a las propiedades standar CSS.
+/// @param {Map} $properties - Mapa de propiedades.
+/// @param {Map} $name-alias - Mapa de alias que representan propiedades de CSS.
+/// @return {Map} - Mapa de propiedades adjuntado con las propiedades base.
+
+@function fn-add-base-properties($properties, $name-alias) {
+  $base-properties: 'inherit', 'initial', 'unset';
+  $new-map: ();
+
+  @each $alias in map-keys($properties) {
+    $previous: map-get($properties, $alias);
+    $new-value: null;
+    @each $property in $base-properties {
+      $name-values: map-get($name-alias, $alias);
+      @if length($name-values) > 1 {
+        $ac: ();
+        @each $name in $name-values {
+          $new-value-temp: (#{$name}: #{$property});
+          $ac: map-merge($ac, $new-value-temp);
+        }
+        $new-value: (#{$property}: $ac);
+      } @else {
+        $new-value: (#{$property}: (#{$name-values}: #{$property}));
+      }
+      $previous: map-merge($previous, $new-value);
+    }
+    $previous: (#{$alias}: $previous);
+    $new-map: map-merge($new-map, $previous);
+  }
+
+  @return $new-map;
+}
+
+/// Transformar el breakpoint para usar en los selectores.
+/// @param {String} - punto de interrupción a transformar para usar en el selector.
+/// @return {String} - punto de interrupción transformado para usar en el selector.
+
+@function fn-convert-bp($size) {
+  $new-size: if($size == nth($sizes, 1), '', '-#{$size}');
+  @return $new-size;
+}

@@ -1,0 +1,61 @@
+@use "../settings" as *;
+@use "../tools" as *;
+
+@include mx-breakpoints('SUI-o') {
+  // Assign heading styles
+  &-big-title {
+    @include big-title;
+  }
+  &-h1 {
+    @include t1;
+  }
+  &-h2 {
+    @include t2;
+  }
+  &-h3 {
+    @include t3;
+  }
+  &-h4 {
+    @include t4;
+  }
+  &-h5 {
+    @include t5;
+  }
+  &-h6 {
+    @include t6;
+  }
+
+  // Assign text content styles
+  &-biggest {
+    @include biggest;
+  }
+  &-bigger {
+    @include bigger;
+  }
+  &-big {
+    @include big;
+  }
+  &-normal {
+    @include normal;
+  }
+  &-small {
+    @include small;
+  }
+  &-smaller {
+    @include smaller;
+  }
+
+  // Classes for font family
+  &-body-font {
+    font-family: var(--body-font);
+  }
+  &-heading-font {
+    font-family: var(--heading-font);
+  }
+
+  &-ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+}

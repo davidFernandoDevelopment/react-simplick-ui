@@ -1,0 +1,35 @@
+@use "sass:math";
+@use "../../settings" as *;
+
+////
+/// @group Tools
+/// @access private
+/// @author David Sanchez
+////
+
+/// Convierte a rem
+/// @param {Length} $size - Longitud (px) que se convertira a rem.
+/// @return {Length}
+
+@function fn-calculate-rem($size) {
+  $rem-size: math.div($size, 16px);
+  @return $rem-size * 1rem;
+}
+
+/// Convierte a pixeles
+/// @param {Length} $size - Longitud (rem, em o px) que se convertira a px.
+/// @return {Length}
+
+@function fn-to-px($value) {
+  @if type-of($value) {
+    @if unit($value) == em {
+      @return math.div($value, 1em) * 16px;
+    } @else if unit($value) == rem {
+      @return math.div($value, 1rem) * 16px;
+    } @else {
+      @return $value;
+    }
+  } @else {
+    @error 'La funcion fn-to-px() solo acepta numero en em y rem';
+  }
+}

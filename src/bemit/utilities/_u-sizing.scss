@@ -1,0 +1,31 @@
+@use '../tools' as *;
+
+$name-alias: (
+  w: width,
+  h: height,
+);
+$value-numbers: fn-generate-number(20, 5%);
+
+$sizing-properties: (
+  w:
+    map-merge(
+      fn-property-value-generator($value-numbers, 'width'),
+      (
+        100vh: (
+          width: 100vh,
+        ),
+      )
+    ),
+  h:
+    map-merge(
+      fn-property-value-generator($value-numbers, 'height'),
+      (
+        100vh: (
+          height: 100vh,
+        ),
+      )
+    ),
+);
+$sizing-total: fn-add-base-properties($sizing-properties, $name-alias);
+
+@include mx-generator-classes('from', ($sizing-total, '.SUI-u'));

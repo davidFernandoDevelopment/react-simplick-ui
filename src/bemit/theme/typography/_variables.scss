@@ -1,0 +1,36 @@
+@use './typography' as *;
+
+$font-size-root: (
+  xxs: (
+    --heading-font: #{$heading-font},
+    --body-font: #{$body-font},
+    --font-normal: #{$font-normal},
+    --font-medium: #{$font-medium},
+    --font-semi-bold: #{$font-semi-bold},
+    --font-bold: #{$font-bold},
+    --heading-line-height: #{$heading-line-height},
+    --body-line-height: #{$body-line-height},
+    --letter-spacing-heading: #{$letter-spacing-heading},
+    --letter-spacing-body: #{$letter-spacing-body},
+    --big-font-size: #{map-get(map-get($big-size, 'xxs'), 'font-size')},
+    --h1-font-size: #{map-get(map-get($h1-size, 'xxs'), 'font-size')},
+    --h2-font-size: #{map-get(map-get($h2-size, 'xxs'), 'font-size')},
+    --h3-font-size: #{map-get(map-get($h3-size, 'xxs'), 'font-size')},
+    --normal-font-size: #{map-get(map-get($normal-size, 'xxs'), 'font-size')},
+    --small-font-size: #{map-get(map-get($small-size, 'xxs'), 'font-size')},
+    --smaller-font-size: #{map-get(map-get($smaller-size, 'xxs'), 'font-size')},
+  ),
+  md: (
+    --big-font-size: #{map-get(map-get($big-size, 'md'), 'font-size')},
+    --h1-font-size: #{map-get(map-get($h1-size, 'md'), 'font-size')},
+  ),
+  lg: (
+    --big-font-size: #{map-get(map-get($big-size, 'lg'), 'font-size')},
+    --h1-font-size: #{map-get(map-get($h1-size, 'lg'), 'font-size')},
+    --h2-font-size: #{map-get(map-get($h2-size, 'lg'), 'font-size')},
+    --h3-font-size: #{map-get(map-get($h3-size, 'lg'), 'font-size')},
+    --normal-font-size: #{map-get(map-get($normal-size, 'lg'), 'font-size')},
+    --small-font-size: #{map-get(map-get($small-size, 'lg'), 'font-size')},
+    --smaler-font-size: #{map-get(map-get($smaller-size, 'lg'), 'font-size')},
+  ),
+);

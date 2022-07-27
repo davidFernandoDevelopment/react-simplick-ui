@@ -1,0 +1,47 @@
+@use "../../tools" as *;
+@use "../../settings" as *;
+
+$maxwidth: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px,
+) !default;
+
+.o-container {
+  $lis: ();
+
+  @at-root {
+    @each $size in $sizes {
+      $new-size: fn-convert-bp($size);
+
+      @if not(index($containerless-breakpoints, $size)) {
+        $lis: append($lis, '.o-container#{$new-size}', 'comma');
+
+        &,
+        .o-container#{$new-size} {
+          @include mx-from($size) {
+            max-width: calc(
+              #{map-get($maxwidth, $size)} + 2 * var(--padding-container)
+            );
+          }
+        }
+      }
+    }
+
+    &,
+    #{$lis} {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: var(--padding-container);
+      padding-right: var(--padding-container);
+      border: 0.1px solid transparent; // EVITA EL COLAPSAMIENTO DE  MARGENES.
+    }
+  }
+
+  &-full {
+    width: 100%;
+  }
+}

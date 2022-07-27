@@ -1,0 +1,48 @@
+@use "../../settings" as *;
+@use "../../tools" as *;
+@use 'c-iconButton-settings' as *;
+
+.SUI-c-iconButton {
+  flex: 0 0 auto;
+  padding: 8px;
+  color: var(--main, var(--gray-600));
+  background-color: transparent;
+
+  $b: &;
+
+  transition: background-color 150ms ease-in-out;
+
+  &:hover {
+    background-color: var(--color-100, var(--gray-300));
+    transition: background-color 150ms ease-in-out;
+  }
+
+  & > *:nth-of-type(1) {
+    font-size: var(--icon-button-font-size);
+  }
+
+  &--disabled {
+    color: var(--gray-400);
+  }
+
+  &--edge {
+    &-start {
+      margin-left: -12px;
+    }
+
+    &-end {
+      margin-right: -12px;
+    }
+  }
+
+  @at-root {
+    @include mx-generate-map-properties(
+      $iconButton-properties-simple,
+      '.SUI-c-iconButton-'
+    );
+    @include mx-generator-classes(
+      'from',
+      ($iconButton-properties-bp, '.SUI-c-iconButton-')
+    );
+  }
+}

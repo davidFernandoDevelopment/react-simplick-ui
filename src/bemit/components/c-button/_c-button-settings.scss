@@ -1,0 +1,94 @@
+$button-disabled: (
+  variant: (
+    default: (
+      background-color: var(--gray-400),
+      color: var(--color-white),
+    ),
+    ghost: (
+      background-color: transparent,
+      border: 1px solid var(--gray-300),
+      color: var(--gray-400),
+    ),
+    link: (
+      background-color: transparent,
+      color: var(--gray-400),
+    ),
+    light: (
+      background-color: var(--gray-200),
+      color: var(--gray-400),
+    ),
+  ),
+);
+
+$button-properties-pseudoclasses: (
+  variant: (
+    default: (
+      color: var(--color-white),
+      background-color: var(--dark, var(--gray-700)),
+    ),
+    ghost: (
+      background-color: var(--color-100, var(--gray-100)),
+      border: 1px solid var(--main, var(--gray-600)),
+      color: var(--dark, var(--gray-700)),
+    ),
+    link: (
+      background-color: var(--color-100, var(--gray-100)),
+      color: var(--dark, var(--gray-700)),
+    ),
+    light: (
+      background-color: var(--color-200, var(--gray-300)),
+      color: var(--dark, var(--gray-700)),
+    ),
+  ),
+);
+
+$button-properties-bp: (
+  size: (
+    small: (
+      --padding: 0.25rem 0.5rem,
+      font-size: var(--small-font-size),
+      --button-icon-font-size: 18px,
+      --button-gap: 0.5rem,
+    ),
+    normal: (
+      --padding: 0.5rem 0.75rem,
+      font-size: var(--normal-font-size),
+      --button-icon-font-size: 24px,
+      --button-gap: 0.5rem,
+    ),
+    large: (
+      --padding: 0.625rem 1rem,
+      font-size: var(--h3-font-size),
+      --button-icon-font-size: 28px,
+      --button-gap: 1rem,
+    ),
+    xlarge: (
+      --padding: 0.75rem 2rem,
+      font-size: var(--h2-font-size),
+      --button-icon-font-size: 32px,
+      --button-gap: 1rem,
+    ),
+  ),
+);
+
+$button-properties-simple: (
+  variant: (
+    default: (
+      background-color: var(--main, var(--gray-600)),
+      color: var(--color-white),
+    ),
+    ghost: (
+      background-color: transparent,
+      color: var(--main, var(--gray-600)),
+      border: 1px solid var(--light, var(--gray-400)),
+    ),
+    link: (
+      background-color: transparent,
+      color: var(--main, var(--gray-600)),
+    ),
+    light: (
+      background-color: var(--color-100, var(--gray-200)),
+      color: var(--main, var(--gray-600)),
+    ),
+  ),
+);

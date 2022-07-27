@@ -1,0 +1,27 @@
+@use '../tools' as *;
+
+$alias-position: (
+  position: position,
+);
+$position-properties: (
+  position: (
+    static: (
+      position: static,
+    ),
+    relative: (
+      position: relative,
+    ),
+    absolute: (
+      position: absolute,
+    ),
+    fixed: (
+      position: fixed,
+    ),
+    sticky: (
+      position: sticky,
+    ),
+  ),
+);
+$position-total: fn-add-base-properties($position-properties, $alias-position);
+
+@include mx-generator-classes('from', ($position-total, '.SUI-u'));

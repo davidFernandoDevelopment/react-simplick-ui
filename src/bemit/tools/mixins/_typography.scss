@@ -1,0 +1,77 @@
+////
+/// @group Tools
+/// @author David Sanchez
+////
+
+@use "../../settings" as *;
+
+
+/// Generan estilos para los titulos.
+@mixin heading-font($extrabold: false) {
+  line-height: var(--heading-line-height);
+  font-family: var(--heading-font);
+  font-weight: if($extrabold, var(--font-semi-bold), var(--font-medium));
+  letter-spacing: var(--letter-spacing-heading);
+  color: var(--title-color);
+}
+@mixin big-title {
+  @include heading-font(true);
+  font-size: var(--big-font-size);
+}
+@mixin t1 {
+  @include heading-font(true);
+  font-size: var(--h1-font-size);
+}
+@mixin t2 {
+  @include heading-font(true);
+  font-size: var(--h2-font-size);
+}
+@mixin t3 {
+  @include heading-font;
+  font-size: var(--h3-font-size);
+}
+@mixin t4 {
+  @include heading-font;
+  font-size: var(--normal-font-size);
+}
+@mixin t5 {
+  @include heading-font;
+  font-size: var(--small-font-size);
+}
+@mixin t6 {
+  @include heading-font;
+  font-size: var(--smaller-font-size);
+}
+
+/// Generan estilos para los textos de contenido.
+@mixin body-font {
+  font-family: var(--body-font);
+  font-weight: var(--font-normal);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--text-color);
+}
+@mixin biggest {
+  @include body-font;
+  font-size: var(--h1-font-size);
+}
+@mixin bigger {
+  @include body-font;
+  font-size: var(--h2-font-size);
+}
+@mixin big {
+  @include body-font;
+  font-size: var(--h3-font-size);
+}
+@mixin normal {
+  @include body-font;
+  font-size: var(--normal-font-size);
+}
+@mixin small {
+  @include body-font;
+  font-size: var(--small-font-size);
+}
+@mixin smaller {
+  @include body-font;
+  font-size: var(--smaller-font-size);
+}

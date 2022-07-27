@@ -1,0 +1,152 @@
+////
+/// @group Tools
+/// @author David Sanchez
+////
+
+@use "../../settings" as *;
+@use "../../tools/functions" as *;
+@use "../../tools/mixins/breakpoints" as *;
+@use "./breakpoints" as *;
+
+/// Generar declaraciones CSS a partir de un mapa opcionalmente se puede agregar prefijos y sufijos.
+/// @param {Map} $map - Map de entrada.
+/// @param {String} $prefix - Prefijo.
+/// @param {String} $sufix - Sufijo.
+
+@mixin mx-generate-declaration($map, $prefix: '', $sufix: '') {
+  @each $property, $value in $map {
+    @if $value != '' {
+      #{$prefix}#{$property}#{$sufix}: #{$value};
+    }
+  }
+}
+
+/// Generar rango para espaciados
+/// @param {string} $selector
+/// @param {String} $string - Selector base.
+/// @param {map} $properties - Propiedad(es) a los que se le aplicaran los valores.
+/// @param {Boolean} $sign false - Es negativo ?.
+/// @example SCSS - Modo de uso
+///  @include generate-spacers("radius", "border-radius");
+/// @example CSS - Se transforma en css:
+/// .radius-0 {
+///    border-radius: 0;
+/// }
+
+@mixin mx-generate-spacers($selector, $properties, $negative: false) {
+  $sign: if($negative, '-', '+');
+  $object: fn-generate-spacers($sign);
+
+  @each $key, $value in $object {
+    $new-selector: #{$selector}-#{$key};
+    $map: fn-set-properties($properties, $value);
+
+    &#{$new-selector} {
+      @include mx-generate-declaration($map);
+    }
+  }
+}
+
+/// Generar reglas CSS a partir de un mapa de propiedades de componentes u objetos.
+/// @param {Map} $map-properties - Mapa de propiedades de componentes u objetos.
+/// @param {String} $base - Selector base.
+/// @param {String} $sufix - Sufijo para el selector.
+/// @param {String} $prefix - Prefijo para el selector.
+
+@mixin mx-generate-map-properties(
+  $map-properties: (),
+  $base: '',
+  $sufix: '',
+  $prefix: '',
+  $size: nth($sizes, 1)
+) {
+  @each $key, $map-values in $map-properties {
+    $new-size: fn-convert-bp($size);
+    $name-temp: #{$base}-#{$key}#{$new-size};
+
+    @each $property, $values in $map-values {
+      $new-property: if($property == '', $property, '-#{$property}');
+      $name-final: #{$name-temp}#{$new-property};
+
+      #{$prefix}#{$name-final}#{$sufix} {
+        @include mx-generate-declaration($values);
+      }
+    }
+  }
+}
+
+/// Convertir un mapa cuyo key son breakpoints a media queries es usado para cambiar las varibles para cada breakpoint.
+/// @param {Map} $values - Mapa cuyo key son breakpoints a media queries.
+
+@mixin mx-declaration-for-breakpoints($values) {
+  $values-xxs: map-get($values, 'xxs');
+  $values-xs: map-get($values, 'xs');
+  $values-sm: map-get($values, 'sm');
+  $values-md: map-get($values, 'md');
+  $values-lg: map-get($values, 'lg');
+  $values-xl: map-get($values, 'xl');
+  $values-xxl: map-get($values, 'xxl');
+
+  @include mx-generate-declaration($values-xxs);
+  @include mx-from(xs) {
+    @include mx-generate-declaration($values-xs);
+  }
+  @include mx-from(sm) {
+    @include mx-generate-declaration($values-sm);
+  }
+  @include mx-from(md) {
+    @include mx-generate-declaration($values-md);
+  }
+  @include mx-from(lg) {
+    @include mx-generate-declaration($values-lg);
+  }
+  @include mx-from(xl) {
+    @include mx-generate-declaration($values-xl);
+  }
+}
+
+/// Genera clases con media query a partir de un map de propiedades.
+/// @param {String} $new-size - Breakpoint en el que se generarán los estilos.
+/// @param {list} $args... - Lista de argumentos.
+/// @example - Modo de uso en SASS:
+/// at-root{
+///   @include mx-generator-classes-base(
+///     'xs', ($paper-elevation, '.c-paper', '', ":not([class*=' -outline'])")
+///   )
+/// };
+/// @example - Se conviente en CSS:
+/// .c-paper--elevation-xs-16:not([class*='-xs-outline']) {
+///   box-shadow: 0 8px 10px -5px var(--shadow-color-1), 0 16px 24px 2px var(--shadow-color-2), 0 6px 30px 5px var(--shadow-color-3);
+/// }
+@mixin mx-generator-classes-base($new-size: '', $args...) {
+  @each $map-properties, $name, $prefix, $sufix, $multi in $args {
+    @include mx-generate-map-properties(
+      $map-properties,
+      $name,
+      $prefix,
+      $sufix,
+      $new-size
+    );
+  }
+}
+
+/// Genera clases con media query a partir de un map de propiedades.
+/// @param {list} $args
+
+@mixin mx-generator-classes($bp: 'from', $args...) {
+  @each $size in $sizes {
+    @if $bp == 'from' {
+      @include mx-from($size) {
+        @include mx-generator-classes-base($size, $args...);
+      }
+    } @else if $bp == 'only' {
+      @if $size == 'xxs' {
+        @include mx-generator-classes-base('', $args...);
+      }
+
+      @include only($size) {
+        @include mx-generator-classes-base($size, $args...);
+      }
+    }
+  }
+}

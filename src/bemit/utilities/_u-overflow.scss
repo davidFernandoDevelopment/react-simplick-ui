@@ -1,0 +1,24 @@
+@use '../tools' as *;
+
+$alias-overflow: (
+  overflow: overflow,
+);
+$overflow-properties: (
+  overflow: (
+    hidden: (
+      overflow: hidden,
+    ),
+    scroll: (
+      overflow: scroll,
+    ),
+    auto: (
+      overflow: auto,
+    ),
+    visible: (
+      overflow: visible,
+    ),
+  ),
+);
+$overflow-total: fn-add-base-properties($overflow-properties, $alias-overflow);
+
+@include mx-generator-classes('from', ($overflow-total, '.SUI-u'));
