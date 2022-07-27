@@ -1,5 +1,6 @@
 {
   "name": "react-simplick-ui",
+  "description": "Incredible components developed with styles from the simplick-ui library.",
   "version": "1.0.0",
   "private": false,
   "license": "MIT",
