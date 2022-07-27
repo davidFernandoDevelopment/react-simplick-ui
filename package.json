@@ -38,7 +38,7 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "npm run clean && tsc && npm run copy-files",
-    "build-stoybook": "build-storybook",
+    "build-storybook": "build-storybook",
     "sass": "sass -w src/bemit",
     "clean": "rimraf dist/",
     "copy-files": "copyfiles -u 1 src/**/*.css dist/"
