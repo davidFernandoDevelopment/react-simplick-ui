@@ -5915,6 +5915,77 @@ td {
   }
 }
 
+.SUI-c-avatarGroup {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.SUI-c-avatarGroup > * {
+  box-sizing: content-box;
+  border: 3px solid var(--border-color);
+}
+.SUI-c-avatarGroup > *:last-child {
+  margin-left: 0;
+}
+.SUI-c-avatarGroup--spacing-0 > * {
+  margin-left: 0;
+}
+
+.SUI-c-avatarGroup--spacing-1 > * {
+  margin-left: -0.5rem;
+}
+
+.SUI-c-avatarGroup--spacing-2 > * {
+  margin-left: -1rem;
+}
+
+.SUI-c-avatarGroup--spacing-3 > * {
+  margin-left: -1.5rem;
+}
+
+.SUI-c-avatarGroup--spacing-4 > * {
+  margin-left: -2rem;
+}
+
+.SUI-c-avatarGroup--spacing-5 > * {
+  margin-left: -2.5rem;
+}
+
+.SUI-c-avatarGroup--spacing-6 > * {
+  margin-left: -3rem;
+}
+
+.SUI-c-avatarGroup--spacing-0-125 > * {
+  margin-left: -0.0625rem;
+}
+
+.SUI-c-avatarGroup--spacing-0-25 > * {
+  margin-left: -0.125rem;
+}
+
+.SUI-c-avatarGroup--spacing-0-5 > * {
+  margin-left: -0.25rem;
+}
+
+.SUI-c-avatarGroup--spacing-0-75 > * {
+  margin-left: -0.375rem;
+}
+
+.SUI-c-avatarGroup--spacing-1-25 > * {
+  margin-left: -0.625rem;
+}
+
+.SUI-c-avatarGroup--spacing-1-5 > * {
+  margin-left: -0.75rem;
+}
+
+.SUI-c-avatarGroup--spacing-1-75 > * {
+  margin-left: -0.875rem;
+}
+
+.SUI-c-avatarGroup--spacing-2-5 > * {
+  margin-left: -1.25rem;
+}
+
 .SUI-u-d-none {
   display: none !important;
 }

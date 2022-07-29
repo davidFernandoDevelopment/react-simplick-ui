@@ -1,6 +1,7 @@
-@import 'c-avatarGroup-settings';
+@use "../../tools/mixins/generators" as mx;
+@use "./c-avatarGroup-settings" as *;
 
-.c-avatarGroup {
+.SUI-c-avatarGroup {
   display: flex;
   flex-direction: row-reverse;
 
@@ -14,9 +15,9 @@
   }
 
   @at-root {
-    @include generate-map-properties(
+    @include mx.mx-generate-map-properties(
       $avatar-group-properties,
-      $base: '.c-avatarGroup-',
+      $base: '.SUI-c-avatarGroup-',
       $sufix: '> *'
     );
   }

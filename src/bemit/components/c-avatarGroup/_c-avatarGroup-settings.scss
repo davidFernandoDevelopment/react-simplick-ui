@@ -1,3 +1,9 @@
+@use '../../tools/functions/generators' as fn;
+
+$spacers-values: fn.fn-generate-spacers(
+  $sign: '-',
+);
+
 $avatar-group-properties: (
-  spacing: generate-spacers-properties('margin-left', $sign: '-'),
+  spacing: fn.fn-property-value-generator($spacers-values, 'margin-left'),
 );

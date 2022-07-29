@@ -54,7 +54,9 @@ export const Avatar: CPolymorphic<'div', AvatarProps> = <C extends React.Element
     if (stateImage === 'loading') {
         children = <Loader />;
     } else if (childrenProp) {
-        children = childrenProp;
+        children = typeof childrenProp === "string" ?
+            childrenProp[0].toUpperCase() :
+            childrenProp;
     } else if (hasImg && alt) {
         children = alt[0].toUpperCase();
     } else {

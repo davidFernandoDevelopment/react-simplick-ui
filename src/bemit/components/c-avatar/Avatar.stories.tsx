@@ -7,7 +7,7 @@ import { Avatar } from './Avatar';
 
 
 export default {
-    title: 'Components/Avatars/Avatar',
+    title: 'Components/Avatar/Avatar',
     component: Avatar,
     argTypes: {
         variant: {
@@ -24,7 +24,8 @@ export default {
                 defaultValue: { summary: "normal" },
             },
             control: 'select',
-            options: ["small", "normal", "large", "xlarge"]
+            options: ["small", "normal", "large", "xlarge"],
+            description: "Avatar Sizes"
         },
         fallback: {
             table: {

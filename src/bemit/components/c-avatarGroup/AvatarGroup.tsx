@@ -29,7 +29,7 @@ const AvatarGroup: CPolymorphicRef<'div', AvatarGroupProps> = React.forwardRef(<
         //eslint-disable-next-line
         []);
     const arrayClasses = [
-        'c-avatarGroup',
+        'SUI-c-avatarGroup',
         className,
         generatedClasses
     ];
