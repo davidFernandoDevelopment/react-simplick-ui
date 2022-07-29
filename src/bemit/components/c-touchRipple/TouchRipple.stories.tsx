@@ -6,7 +6,16 @@ import { TouchRipple } from './TouchRipple';
 
 export default {
     title: 'Components/Button/TouchRipple',
-    component: TouchRipple
+    component: TouchRipple,
+    argTypes: {
+        centerRipple: {
+            table: {
+                type: { summary: "boolean" },
+                defaultValue: { summary: false }
+            },
+            description: "The Ripple Of The TouchRipple Component Will Appear Centered"
+        }
+    }
 } as ComponentMeta<typeof TouchRipple>;
 
 const Template: ComponentStory<typeof TouchRipple> =
@@ -17,6 +26,7 @@ const Template: ComponentStory<typeof TouchRipple> =
                 display: 'block',
                 width: '200px',
                 height: '200px',
+                margin: 'auto',
                 border: '1px solid red'
             }}
         >
@@ -25,4 +35,5 @@ const Template: ComponentStory<typeof TouchRipple> =
 
 export const Basic = Template.bind({});
 Basic.args = {
+    centerRipple: false
 };

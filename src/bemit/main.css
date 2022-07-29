@@ -5754,6 +5754,167 @@ td {
   }
 }
 
+.SUI-c-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  line-height: 1.3;
+  font-weight: var(--font-medium);
+  font-family: "Helvetica", "Arial", sans-serif;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: var(--main, var(--gray-600));
+  color: var(--color-100, var(--gray-100));
+  font-size: var(--avatar-font-size);
+}
+.SUI-c-avatar > * {
+  font-size: var(--avatar-font-size);
+}
+.SUI-c-avatar__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.SUI-c-avatar--variant-circle {
+  border-radius: 50%;
+}
+
+.SUI-c-avatar--variant-square {
+  border-radius: 10px;
+}
+
+.SUI-c-avatar--size-small {
+  --avatar-size: 24px;
+  --avatar-font-size: 14px;
+}
+
+.SUI-c-avatar--size-normal {
+  --avatar-size: 32px;
+  --avatar-font-size: 20px;
+}
+
+.SUI-c-avatar--size-large {
+  --avatar-size: 40px;
+  --avatar-font-size: 24px;
+}
+
+.SUI-c-avatar--size-xlarge {
+  --avatar-size: 48px;
+  --avatar-font-size: 28px;
+}
+
+@media screen and (min-width: 380px) {
+  .SUI-c-avatar--size-xs-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-xs-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-xs-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-xs-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+@media screen and (min-width: 576px) {
+  .SUI-c-avatar--size-sm-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-sm-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-sm-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-sm-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .SUI-c-avatar--size-md-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-md-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-md-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-md-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .SUI-c-avatar--size-lg-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-lg-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-lg-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-lg-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .SUI-c-avatar--size-xl-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-xl-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-xl-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-xl-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .SUI-c-avatar--size-xxl-small {
+    --avatar-size: 24px;
+    --avatar-font-size: 14px;
+  }
+  .SUI-c-avatar--size-xxl-normal {
+    --avatar-size: 32px;
+    --avatar-font-size: 20px;
+  }
+  .SUI-c-avatar--size-xxl-large {
+    --avatar-size: 40px;
+    --avatar-font-size: 24px;
+  }
+  .SUI-c-avatar--size-xxl-xlarge {
+    --avatar-size: 48px;
+    --avatar-font-size: 28px;
+  }
+}
+
 .SUI-u-d-none {
   display: none !important;
 }

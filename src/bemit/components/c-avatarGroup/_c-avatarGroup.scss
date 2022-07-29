@@ -1,0 +1,23 @@
+@import 'c-avatarGroup-settings';
+
+.c-avatarGroup {
+  display: flex;
+  flex-direction: row-reverse;
+
+  & > * {
+    box-sizing: content-box;
+    border: 3px solid var(--border-color);
+
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+
+  @at-root {
+    @include generate-map-properties(
+      $avatar-group-properties,
+      $base: '.c-avatarGroup-',
+      $sufix: '> *'
+    );
+  }
+}

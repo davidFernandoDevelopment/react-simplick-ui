@@ -1,0 +1,31 @@
+$avatar-properties-bp: (
+  size: (
+    small: (
+      --avatar-size: 24px,
+      --avatar-font-size: 14px,
+    ),
+    normal: (
+      --avatar-size: 32px,
+      --avatar-font-size: 20px,
+    ),
+    large: (
+      --avatar-size: 40px,
+      --avatar-font-size: 24px,
+    ),
+    xlarge: (
+      --avatar-size: 48px,
+      --avatar-font-size: 28px,
+    ),
+  ),
+);
+
+$avatar-properties-simple: (
+  variant: (
+    circle: (
+      border-radius: 50%,
+    ),
+    square: (
+      border-radius: 10px,
+    ),
+  ),
+);

@@ -1,5 +1,5 @@
 import React, { MouseEvent, useRef } from 'react';
-import { SystemCTouchRippleProperties } from '../../../generic/systemComponentProperties';
+import { SystemCTouchRippleProperties } from '@generic/systemComponentProperties';
 
 
 

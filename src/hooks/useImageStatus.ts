@@ -9,6 +9,8 @@ export function useImageStatus(src?: string): [Status, HTMLImageElement] {
     const [loaded, setLoaded] = useState<Status>('loading');
 
     useEffect(() => {
+        setLoaded('loading');
+
         if (!src) {
             setLoaded('error');
             return undefined;

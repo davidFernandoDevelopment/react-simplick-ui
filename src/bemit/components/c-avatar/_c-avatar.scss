@@ -1,0 +1,43 @@
+@use "../../tools/mixins/generators" as g;
+@use './c-avatar-settings' as a;
+
+.SUI-c-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  line-height: 1.3;
+  font-weight: var(--font-medium);
+  font-family: 'Helvetica', 'Arial', sans-serif;
+
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+
+  background-color: var(--main, var(--gray-600));
+  color: var(--color-100, var(--gray-100));
+
+  font-size: var(--avatar-font-size);
+
+  & > * {
+    font-size: var(--avatar-font-size);
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @at-root {
+    @include g.mx-generate-map-properties(
+      a.$avatar-properties-simple,
+      $base: '.SUI-c-avatar-'
+    );
+    @include g.mx-generator-classes(
+      'from',
+      (a.$avatar-properties-bp, '.SUI-c-avatar-')
+    );
+  }
+}

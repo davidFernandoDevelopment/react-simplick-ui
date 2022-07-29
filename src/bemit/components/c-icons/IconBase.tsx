@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 
-import { SVGProps } from '../../../generic/PolymorphicGeneric';
-import { generateComponentClasses } from '../../../utilities/classForReact';
-import { IconBasePropertySummary, SystemCIconBaseproperties } from '../../../generic/systemComponentProperties';
+import { SVGProps } from '@generic/PolymorphicGeneric';
+import { generateComponentClasses } from '@utilities/classForReact';
+import { IconBasePropertySummary, SystemCIconBaseproperties } from '@generic/systemComponentProperties';
 
 
 export interface IconBaseProps extends SystemCIconBaseproperties { }

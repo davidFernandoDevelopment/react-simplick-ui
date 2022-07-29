@@ -3,16 +3,14 @@ import classNames from 'classnames';
 
 import TouchRipple, { TouchRippleProps } from '../c-touchRipple/TouchRipple';
 
-import { generateComponentClasses } from '../../../utilities/classForReact';
-import { SystemSDisplayProperties } from '../../../generic/systemStyleProperties';
-import { SystemCButtonBaseProperties, ButtonBasePropertySummary, ButtonBaseProperties } from '../../../generic/systemComponentProperties';
-import { CPolymorphicRef, PolymorphicRef, PropsRef } from '../../../generic/PolymorphicGeneric';
+import { generateComponentClasses } from '@utilities/classForReact';
+import { SystemCButtonBaseProperties, ButtonBasePropertySummary, ButtonBaseProperties } from '@generic/systemComponentProperties';
+import { CPolymorphicRef, PolymorphicRef, PropsRef } from '@generic/PolymorphicGeneric';
 
 
 
 export type ButtonBaseProps =
     & SystemCButtonBaseProperties
-    // & Omit<SystemSDisplayProperties, keyof ButtonBaseProperties> // TIPO PARA UTILIDAD
     & Omit<TouchRippleProps, keyof ButtonBaseProperties>; // TIPO PARA COMPONENTE-DEP
 
 

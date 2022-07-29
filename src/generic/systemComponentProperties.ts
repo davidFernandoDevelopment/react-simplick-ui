@@ -109,7 +109,7 @@ export const LoaderButtonPropertySummary: ComponentPropertySummary = {
 const ICON_BUTTON = [['size', 'c-iconButton--size'], ['variant', 'c-iconButton--variant'], ['disabled', 'c-iconButton--disabled']] as const;
 type IconButtonBasic = {
     disabled: boolean;
-    edge: 'start' | 'end';
+    edge: 'start' | 'end' | 'none';
     variant: 'circle' | 'square';
     /**
      * Colores del componente, puede cambiar la sombra con la propiedad sx={{pallete}}
@@ -119,6 +119,7 @@ type IconButtonBasic = {
 type IconButtonPropertyValues = {
     /**
      * Tamaño del componente, Sizes = "small" | "normal" | "large" | "xlarge". Admite breakpoints
+     * @default "normal"
      */
     size: Sizes,
 };
@@ -283,19 +284,37 @@ export const CardHeaderPropertySummary: ComponentPropertySummary = {
 
 const AVATAR = [['size', 'c-avatar--size'], ['variant', 'c-avatar--variant']] as const;
 type AvatarPropertyBasic = {
+    /** 
+     * Image source url
+    */
     src: string;
+    /** 
+     * Image source url 
+    */
     alt: string;
+    /**
+     * Custom default image.
+     * @default <User />
+     */
     fallback: React.ReactNode;
+    /**
+     * Avatar variant
+     * @default circle
+     * @type circle | square
+     */
     variant: 'circle' | 'square';
 };
 type AvatarPropertyValues = {
+    /**
+     * Avatar size - Supports breakpoints
+     */
     size: Sizes;
 };
 const AVATAR_DEFAULTS: Partial<AvatarProperties> = {
     size: 'normal',
     variant: 'circle'
 };
-const AVATAR_UTILITIES = [...COLOR];
+const AVATAR_UTILITIES: any[] = [];
 export type AvatarProperties = AvatarPropertyBasic & AvatarPropertyValues;
 export type SystemCAvatarProperties = ComponentPropertyValues<AvatarPropertyValues> & ComponentPropertyBasic<AvatarPropertyBasic>;
 export const AvatarPropertySummary: ComponentPropertySummary = {

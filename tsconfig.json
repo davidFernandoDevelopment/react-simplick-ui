@@ -2,6 +2,13 @@
   "compilerOptions": {
     "outDir": "dist",
     "target": "es5",
+    "baseUrl": ".",
+    "paths": {
+      "@hooks/*":  ["src/hooks/*"],
+      "@generic/*":  ["src/generic/*"],
+      "@utilities/*":  ["src/utilities/*"],
+      "@stories/*":  ["src/stories/*"]
+    },
     "lib": [
       "dom",
       "dom.iterable",

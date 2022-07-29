@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import classNames from 'classnames';
 
 import ButtonBase from '../c-buttonBase/ButtonBase';
-import { generateComponentClasses } from '../../../utilities/classForReact';
-import { IconButtonPropertySummary, SystemCIconButtonProperties, IconButtonProperties } from '../../../generic/systemComponentProperties';
-import { CPolymorphicRef, PolymorphicRef, PropsRef } from '../../../generic/PolymorphicGeneric';
+import { generateComponentClasses } from '@utilities/classForReact';
+import { IconButtonPropertySummary, SystemCIconButtonProperties, IconButtonProperties } from '@generic/systemComponentProperties';
+import { CPolymorphicRef, PolymorphicRef, PropsRef } from '@generic/PolymorphicGeneric';
 import { ButtonBaseProps } from '../c-buttonBase/ButtonBase';
 
 
