@@ -62,22 +62,7 @@ export default {
             control: "radio",
             options: ["start", "end", "none"],
             description: "Align correctly when using the iconButton in a list"
-        },
-        darkmode: {
-            table: {
-                category: "Try in dark mode",
-                type: { summary: "ligth | dark" },
-                defaultValue: { summary: "light" }
-            },
-            control: 'radio',
-            options: ["dark", "light"],
-            description: "Component test in dark mode"
-        },
-        as: { table: { disable: true } },
-        sx: { table: { disable: true } },
-        ref: { table: { disable: true } },
-        style: { table: { disable: true } },
-        className: { table: { disable: true } },
+        }
     }
 } as ComponentMeta<typeof IconButton>;
 

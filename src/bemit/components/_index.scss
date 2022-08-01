@@ -2,6 +2,9 @@
 @forward 'c-icons';
 // ICONS
 
+// DIVIDER
+@forward 'c-divider/c-divider';
+
 // BUTTON
 @forward 'c-touchRipple/c-touchRipple';
 @forward 'c-buttonBase/c-buttonBase';
@@ -26,3 +29,7 @@
 // MODAL
 @forward 'c-backDrop/c-backDrop';
 @forward 'c-modal/c-modal';
+@forward 'c-dialog/c-dialog';
+@forward 'c-dialogTitle/c-dialogTitle';
+@forward 'c-dialogContent/c-dialogContent';
+@forward 'c-dialogActions/c-dialogActions';

@@ -9,7 +9,7 @@ $maxwidth: (
   xxl: 1320px,
 ) !default;
 
-.o-container {
+.SUI-o-container {
   $lis: ();
 
   @at-root {
@@ -17,10 +17,10 @@ $maxwidth: (
       $new-size: fn-convert-bp($size);
 
       @if not(index($containerless-breakpoints, $size)) {
-        $lis: append($lis, '.o-container#{$new-size}', 'comma');
+        $lis: append($lis, '.SUI-o-container#{$new-size}', 'comma');
 
         &,
-        .o-container#{$new-size} {
+        .SUI-o-container#{$new-size} {
           @include mx-from($size) {
             max-width: calc(
               #{map-get($maxwidth, $size)} + 2 * var(--padding-container)

@@ -1,0 +1,29 @@
+.SUI-c-dialog {
+  &__modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__container {
+    transform: scale(0);
+    transition: transform 0.4s var(--transition-cubic-scale);
+
+    .SUI-c-modal.is-open & {
+      transform: scale(1);
+      transition: transform 0.4s var(--transition-cubic-scale) 0.1s;
+    }
+    .SUI-c-modal.modal-static & {
+      transform: scale(1.03);
+      transition: transform 0.4s var(--transition-cubic-scale);
+    }
+  }
+
+  &__paper {
+    display: flex;
+    flex-direction: column;
+
+    max-height: calc(100vh - 64px);
+    overflow: hidden;
+  }
+}

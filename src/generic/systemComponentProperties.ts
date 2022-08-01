@@ -470,7 +470,7 @@ const DIALOG_TITLE_DEFAULTS: Partial<DialogTitleProperties> = {
     gap: 1,
     spacing: 2
 };
-const DIALOG_TITLE_UTILITIES = [...FLEXBOX_CONTAINER];
+const DIALOG_TITLE_UTILITIES: any[] = [];
 export type DialogTitleProperties = DialogTitlePropertiesValues & DialogTitlePropertiesBasic;
 export type SystemCDialogTitleProperties = ComponentPropertyBasic<DialogTitlePropertiesBasic> & ComponentPropertyValues<DialogTitlePropertiesValues>;
 export const DialogTitlePropertySummary: ComponentPropertySummary = {

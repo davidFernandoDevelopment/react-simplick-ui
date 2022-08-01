@@ -1,0 +1,93 @@
+@use "../../tools/mixins/generators" as mx;
+
+$divider-properties: (
+  variant: (
+    'fullWidth': (
+      margin: 0,
+    ),
+    'middle': (
+      margin: 0 1rem,
+    ),
+    'inset': (
+      margin: 0 0 0 72px,
+    ),
+  ),
+  orientation: (
+    'horizontal': (
+      flex-direction: 'row',
+    ),
+    'vertical': (
+      flex-direction: 'column',
+    ),
+  ),
+);
+
+.SUI-c-divider {
+  white-space: nowrap;
+  border-style: solid;
+  flex-shrink: 0;
+  border-width: 0 0 thin;
+  border-color: var(--divider-color);
+
+  $b: &;
+
+  &__wrapper {
+    display: inline-block;
+    padding-left: 12px;
+    padding-right: 12px;
+
+    #{$b}[class*='vertical'] & {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+  }
+
+  &.has-children {
+    display: flex;
+    border-style: none;
+
+    &::before,
+    &::after {
+      content: '';
+      position: relative;
+      top: 50%;
+      width: 100%;
+      border-top: thin solid;
+      border-color: inherit;
+    }
+    &[class*='vertical'] {
+      &::before,
+      &::after {
+        top: 0;
+        width: 0;
+        border-top: none;
+        left: 50%;
+        height: 100%;
+        border-left: thin solid var(--divider-color);
+      }
+    }
+    &[class*='left'] {
+      &::before {
+        width: 90%;
+      }
+      &::after {
+        width: 10%;
+      }
+    }
+    &[class*='right'] {
+      &::before {
+        width: 10%;
+      }
+      &::after {
+        width: 90%;
+      }
+    }
+  }
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $divider-properties,
+      '.SUI-c-divider-'
+    );
+  }
+}

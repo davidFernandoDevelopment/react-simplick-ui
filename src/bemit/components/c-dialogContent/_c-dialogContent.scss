@@ -1,0 +1,23 @@
+@use "../../tools/functions/generators" as fn;
+@use "../../tools/mixins/generators" as mx;
+
+$dialog-content-properties: (
+  spacing: fn.fn-property-value-generator(fn.$spacers-positive, 'padding'),
+  gap: fn.fn-property-value-generator(fn.$spacers-positive, 'gap'),
+);
+
+.SUI-c-dialogContent {
+  overflow: auto;
+
+  &--divider {
+    border-top: 1px solid var(--gray-400);
+    border-bottom: 1px solid var(--gray-400);
+  }
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $dialog-content-properties,
+      $base: '.SUI-c-dialogContent-'
+    );
+  }
+}

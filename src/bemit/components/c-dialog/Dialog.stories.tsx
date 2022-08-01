@@ -1,36 +1,37 @@
-import { WrapperThemeComponent } from '@stories/WrapperThemeComponent';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Modal from './Modal';
-import Card from '../c-card/Card';
-import CardContent from '../c-cardContent/CardContent';
-import { useState } from 'react';
+
+import { WrapperThemeComponent } from '@stories/WrapperThemeComponent';
+import { Dialog } from '../c-dialog';
 import Button from '../c-button/Button';
 
 export default {
-    title: "Components/Modal/Modal",
-    component: Modal,
+    title: "Components/Dialog/Dialog",
+    component: Dialog,
     argTypes: {
+        maxWidth: {
+            table: {
+                type: { summary: "sm | md | lg | xl | xxl" },
+                defaultValue: { summary: "Use the maximum widths for each breakpoint." }
+            },
+            control: "select",
+            options: ["sm", "md", "lg", "xl", "xxl"],
+            description: "Dialog component maximum width."
+        },
         p: {
             table: {
                 type: { summary: "string" },
+                defaultValue: { summary: "c-dialog" }
             },
-            description: "Name of the element that the modal will use.",
+            description: "Name of the element that the Dialog will use.",
         },
         open: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
                 defaultValue: { summary: false }
             },
             control: "disable",
             description: "Open the Modal"
-        },
-        disablePortal: {
-            table: {
-                type: { summary: "boolean" },
-                defaultValue: { summary: false }
-            },
-            control: "boolean",
-            description: "Disable Portal"
         },
         container: {
             table: {
@@ -44,8 +45,18 @@ export default {
             },
             description: "Container where the component will be rendered."
         },
+        disablePortal: {
+            table: {
+                category: "Inherit from Modal",
+                type: { summary: "boolean" },
+                defaultValue: { summary: false }
+            },
+            control: "boolean",
+            description: "Disable Portal"
+        },
         hideBackdrop: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
                 defaultValue: { summary: false }
             },
@@ -54,6 +65,7 @@ export default {
         },
         staticBackdrop: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
                 defaultValue: { summary: false }
             },
@@ -62,6 +74,7 @@ export default {
         },
         disableScrollLock: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
                 defaultValue: { summary: false }
             },
@@ -70,14 +83,16 @@ export default {
         },
         disableAnimationContent: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
-                defaultValue: { summary: false }
+                defaultValue: { summary: true }
             },
-            control: "boolean",
+            control: "disable",
             description: "Disable default animation."
         },
         keepMounted: {
             table: {
+                category: "Inherit from Modal",
                 type: { summary: "boolean" },
                 defaultValue: { summary: false }
             },
@@ -85,44 +100,41 @@ export default {
             description: "Keeps the modal component mounted on the dom when it closes."
         }
     }
-} as ComponentMeta<typeof Modal>;
+} as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<typeof Modal> = (args) => {
-    const [open, setOpen] = useState(args.open);
+const Template: ComponentStory<typeof Dialog> = (args) => {
+    const { open, onClose, onOpen } = Dialog.useDialog();
 
     return (
         <WrapperThemeComponent>
-            <Button
-                onClick={() => setOpen(true)}
-            >Open modal</Button>
-            <Modal
+            <Button onClick={onOpen}>Open Dialog</Button>
+            <Dialog
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={onClose}
+                maxWidth={args.maxWidth}
                 hideBackdrop={args.hideBackdrop}
                 staticBackdrop={args.staticBackdrop}
                 disableScrollLock={args.disableScrollLock}
-                disableAnimationContent={args.disableAnimationContent}
                 keepMounted={args.keepMounted}
                 disablePortal={args.disablePortal}
                 p={args.p}
             >
-                <Card>
-                    <CardContent>
-                        Hola soy un modal
-                    </CardContent>
-                </Card>
-            </Modal>
-        </WrapperThemeComponent >
+                <Dialog.Title closeButton>Eliminar producto</Dialog.Title>
+                <Dialog.Content divider>¿Estas seguro de eliminar producto?</Dialog.Content>
+                <Dialog.Actions>
+                    <Button themeColor="danger" fullWidth>Aceptar</Button>
+                    <Button fullWidth onClick={onClose}>Cancelar</Button>
+                </Dialog.Actions>
+            </Dialog>
+        </WrapperThemeComponent>
     );
 };
-
 export const Basic = Template.bind({});
-Basic.storyName = "Modal";
+Basic.storyName = "Dialog";
 Basic.args = {
-    p: "c-modal",
-    open: false,
-    disablePortal: false,
+    p: "c-dialog",
     hideBackdrop: false,
+    disablePortal: false,
     staticBackdrop: false,
     disableScrollLock: false,
     disableAnimationContent: false,

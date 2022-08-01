@@ -14,7 +14,6 @@ export type ModalProps =
     & Omit<PortalProps, keyof ModalProperties>
     & {
         p?: string;
-        id?: string;
     };
 
 
@@ -28,7 +27,6 @@ const hasScroll = (element: Element, keep: number | null): boolean => {
 
 const Modal: CPolymorphicRef<'div', ModalProps> = React.forwardRef(function Modal<C extends React.ElementType>({
     p,
-    id,
     as,
     style,
     onClose,
@@ -108,7 +106,7 @@ const Modal: CPolymorphicRef<'div', ModalProps> = React.forwardRef(function Moda
                         ref={ref || refModal}
                         style={style}
                         className={keepMounted ? classes : shouldRenderChild ? classes : ''}
-                        {...({ id, ...restProps })}
+                        {...restProps}
                     >
                         {
                             <BackDrop

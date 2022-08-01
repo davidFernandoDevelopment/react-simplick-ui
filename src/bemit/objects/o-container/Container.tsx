@@ -25,7 +25,7 @@ const OContainer: CPolymorphic<'div', OContainerProps> = <C extends React.Elemen
         generatedClasses,
         { [`${p}__container`]: p },
         { [`${className}`]: className },
-        { 'o-container': !generatedClasses },
+        { 'SUI-o-container': !generatedClasses },
     ];
 
     let classes = classNames(arrayClasses);

@@ -190,3 +190,9 @@
 
   @return $res;
 }
+
+/// Variables comunes para componentes.
+$spacers-positive: fn-generate-spacers();
+$spacers-negative: fn-generate-spacers(
+  $sign: '-',
+);

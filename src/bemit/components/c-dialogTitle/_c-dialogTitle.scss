@@ -1,0 +1,20 @@
+@use "../../tools/functions/generators" as fn;
+@use "../../tools/mixins/generators" as mx;
+
+$dialog-title-properties: (
+  spacing: fn.fn-property-value-generator(fn.$spacers-positive, 'padding'),
+  gap: fn.fn-property-value-generator(fn.$spacers-positive, 'gap'),
+);
+
+.SUI-c-dialogTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $dialog-title-properties,
+      $base: '.SUI-c-dialogTitle-'
+    );
+  }
+}
