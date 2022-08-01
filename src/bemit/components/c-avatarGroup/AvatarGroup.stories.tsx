@@ -6,7 +6,7 @@ import AvatarGroup from './AvatarGroup';
 
 
 export default {
-    title: 'Components/Avatar/AvatarGroup',
+    title: 'Components/Avatars/AvatarGroup',
     component: AvatarGroup,
     argTypes: {
         max: {
@@ -100,6 +100,7 @@ const Template: ComponentStory<typeof AvatarGroup> =
         </WrapperThemeComponent>;
 
 export const Basic = Template.bind({});
+Basic.storyName = "AvatarGroup";
 Basic.args = {
     total: 10,
     max: 2,

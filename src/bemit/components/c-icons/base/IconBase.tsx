@@ -1,8 +1,6 @@
-import classNames from 'classnames';
-
 import { SVGProps } from '@generic/PolymorphicGeneric';
-import { generateComponentClasses } from '@utilities/classForReact';
 import { IconBasePropertySummary, SystemCIconBaseproperties } from '@generic/systemComponentProperties';
+import { useClassGenerator } from '@hooks/useClassGenerator';
 
 
 export interface IconBaseProps extends SystemCIconBaseproperties { }
@@ -14,17 +12,18 @@ const IconBase = <C extends SVGSVGElement>({
     className,
     ...restProps
 }: SVGProps<C, IconBaseProps>) => {
-
-    const { generatedClasses, rest } = generateComponentClasses(
-        restProps,
-        IconBasePropertySummary
-    );
-    const arrayClasses = [
-        generatedClasses,
-        'SUI-c-iconBase',
+    const p = "SUI-c-iconBase-svg";
+    const {
+        rest,
+        mainClasses: classes
+    } = useClassGenerator({
+        p,
+        deps: [],
         className,
-    ];
-    const classes = classNames(arrayClasses);
+        props: restProps,
+        propertySummary: IconBasePropertySummary,
+        mainClasses: []
+    });
 
     return (
         <svg

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { SystemCAvatarProperties, AvatarProperties, AvatarPropertySummary } from '@generic/systemComponentProperties';
 import { useImageStatus } from '@hooks/useImageStatus';
 import Notification from '../c-icons/icons/Notification';
-import Loader from '../c-icons/icons/Loader';
+import Loader from '../c-icons/icons/i-loader/Loader';
 import { useClassGenerator } from '@hooks/useClassGenerator';
 import { CPolymorphic, Props } from '@generic/PolymorphicGeneric';
 

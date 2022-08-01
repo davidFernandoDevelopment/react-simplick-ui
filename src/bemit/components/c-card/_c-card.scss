@@ -1,0 +1,18 @@
+@use "../../tools/functions/generators" as fn;
+@use "../../tools/mixins/generators" as mx;
+
+$spacers-2: fn.fn-generate-spacers();
+$card-properties: (
+  spacing: fn.fn-property-value-generator($spacers-2, 'padding'),
+);
+
+.c-card {
+  overflow: hidden;
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $card-properties,
+      $base: '.SUI-c-card-'
+    );
+  }
+}

@@ -5,7 +5,7 @@ import { ButtonBase } from './ButtonBase';
 
 
 export default {
-    title: 'Components/Button/ButtonBase',
+    title: 'Components/Buttons/ButtonBase',
     component: ButtonBase,
     argTypes: {
         disabled: {
@@ -44,6 +44,7 @@ export default {
 const Template: ComponentStory<typeof ButtonBase> = (args) => <ButtonBase {...args}>Button base</ButtonBase>;
 
 export const Basic = Template.bind({});
+Basic.storyName = "ButtonBase";
 Basic.args = {
     disabled: false,
     disableRipple: false,

@@ -1,0 +1,23 @@
+@use "../../tools/mixins/generators" as mx;
+@use 'c-paper-settings' as ps;
+
+.SUI-c-paper {
+  background-color: var(--second-bg-color);
+  border-radius: var(--border-radius);
+
+  &--square {
+    border-radius: initial;
+  }
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      ps.$paper-properties,
+      $base: '.SUI-c-paper-'
+    );
+    @include mx.mx-generate-map-properties(
+      ps.$paper-elevation,
+      $base: '.SUI-c-paper-',
+      $sufix: ':not([class*="outline"])'
+    );
+  }
+}

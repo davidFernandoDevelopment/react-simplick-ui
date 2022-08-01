@@ -151,7 +151,7 @@ type PaperPropertyValues = {};
 const PAPER_DEFAULTS: Partial<PaperProperties> = {
     variant: 'elevation',
 };
-const PAPER_UTILITIES = [...BORDER, ...COLOR];
+const PAPER_UTILITIES: any[] = [];
 export type PaperProperties = PaperPropertyValues & PaperPropertyBasic;
 export type SystemCPaperProperties = ComponentPropertyValues<PaperPropertyValues> & ComponentPropertyBasic<PaperPropertyBasic>;
 export const PaperPropertySummary: ComponentPropertySummary = {
@@ -170,7 +170,7 @@ type CardPropertyValues = {};
 const CARD_DEFAULTS: CardProperties = {
     spacing: 0
 };
-const CARD_UTILITIES = [...FLEXBOX_CONTAINER];
+const CARD_UTILITIES: any[] = [];
 export type CardProperties = CardPropertyValues & CardPropertyBasic;
 export type SystemCCardProperties = ComponentPropertyValues<CardPropertyValues> & ComponentPropertyBasic<CardPropertyBasic>;
 export const CardPropertySummary: ComponentPropertySummary = {
@@ -189,7 +189,7 @@ type CardContentPropertyValues = {};
 const CARD_CONTENT_DEFAULTS: Partial<CardContentProperties> = {
     spacing: 2
 };
-const CARD_CONTENT_UTILITIES = [...TEXT, ...FLEXBOX_ITEM, ...FLEXBOX_CONTAINER];
+const CARD_CONTENT_UTILITIES: any = [];
 export type CardContentProperties = CardContentPropertyValues & CardContentPropertyBasic;
 export type SystemCCardContentProperties = ComponentPropertyValues<CardContentPropertyValues> & ComponentPropertyBasic<CardContentPropertyBasic>;
 export const CardContentPropertySummary: ComponentPropertySummary = {
@@ -200,7 +200,7 @@ export const CardContentPropertySummary: ComponentPropertySummary = {
 
 
 
-const CARD_ACTIONS = [['spacing', 'c-cardActions--spacing'], ['gap', 'c-dialogActions--gap'], ['disableGap', 'c-cardActions--disableGap']] as const;
+const CARD_ACTIONS = [['spacing', 'c-cardActions--spacing'], ['gap', 'c-cardActions--gap'], ['disableGap', 'c-cardActions--disableGap']] as const;
 type CardActionsPropertyBasic = {
     disableGap: boolean;
     spacing: UnitValues;
@@ -208,7 +208,7 @@ type CardActionsPropertyBasic = {
 };
 type CardActionsPropertyValues = {};
 const CARD_ACTIONS_DEFAULTS: Partial<CardActionsProperties> = {
-    gap: 2,
+    gap: 1,
     spacing: 1,
     disableGap: false
 };
@@ -225,7 +225,7 @@ export const CardActionsPropertySummary: ComponentPropertySummary = {
 
 const CARD_ACTION_AREA = [] as const;
 const CARD_ACTION_AREA_DEFAULTS: CardActionAreaProperties = {};
-const CARD_ACTION_AREA_UTILITIES = [...FLEXBOX_CONTAINER];
+const CARD_ACTION_AREA_UTILITIES: any[] = [];
 const CARD_ACTION_AREA_INHERIT = ['disabled'];
 type CardActionAreaPropertyValues = {};
 export type CardActionAreaProperties = CardActionAreaPropertyValues;
@@ -243,7 +243,7 @@ const CARD_MEDIA = [['variant', 'c-cardMedia--variant']] as const;
 const CARD_MEDIA_DEFAULTS: Partial<CardMediaProperties> = {
     variant: 'ratio-9-16'
 };
-const CARD_MEDIA_UTILITIES = [...BORDER];
+const CARD_MEDIA_UTILITIES: any[] = [];
 type CardMediaPropertyValues = {
     variant: 'ratio-9-16' | 'default';
 };

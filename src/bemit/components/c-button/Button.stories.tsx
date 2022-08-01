@@ -1,13 +1,12 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { WrapperThemeComponent } from '@stories/WrapperThemeComponent';
 
-import '../../main.css';
 import Notification from '../c-icons/icons/Notification';
 import { Button } from './Button';
 
 
 export default {
-    title: 'Components/Button/Button',
+    title: 'Components/Buttons/Button',
     component: Button,
     argTypes: {
         variant: {
@@ -99,22 +98,7 @@ export default {
             },
             control: 'boolean',
             description: "Show icon after text"
-        },
-        darkmode: {
-            table: {
-                category: "Try in dark mode",
-                type: { summary: "ligth | dark" },
-                defaultValue: { summary: "light" }
-            },
-            control: 'radio',
-            options: ["dark", "light"],
-            description: "Component test in dark mode"
-        },
-        as: { table: { disable: true } },
-        sx: { table: { disable: true } },
-        ref: { table: { disable: true } },
-        style: { table: { disable: true } },
-        className: { table: { disable: true } },
+        }
     }
 } as ComponentMeta<typeof Button>;
 
@@ -131,6 +115,7 @@ const Template: ComponentStory<typeof Button> =
         </WrapperThemeComponent>;
 
 export const Basic = Template.bind({});
+Basic.storyName = "Button";
 Basic.args = {
     size: 'normal',
     variant: 'default',

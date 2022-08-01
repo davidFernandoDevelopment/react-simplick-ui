@@ -1,0 +1,26 @@
+@use "../../tools/functions/generators" as fn;
+@use "../../tools/mixins/generators" as mx;
+
+$spacers: fn.fn-generate-spacers();
+$card-actions-properties: (
+  spacing: fn.fn-property-value-generator($spacers, 'padding'),
+  gap: fn.fn-property-value-generator($spacers, 'gap'),
+);
+
+.SUI-c-cardActions {
+  display: flex;
+  align-items: center;
+
+  $b: &;
+
+  &--disableGap {
+    gap: 0;
+  }
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $card-actions-properties,
+      $base: '.SUI-c-cardActions-'
+    );
+  }
+}

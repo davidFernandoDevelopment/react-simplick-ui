@@ -1,0 +1,17 @@
+.i-moreVert {
+  --base: calc(var(--size) / 10);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--base);
+
+  &__point {
+    display: block;
+    width: calc(var(--base) * 2);
+    height: calc(var(--base) * 2);
+    border-radius: 50%;
+    background-color: currentColor;
+  }
+}

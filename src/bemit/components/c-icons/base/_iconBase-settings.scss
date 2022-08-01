@@ -1,0 +1,21 @@
+@use "../../../tools/functions/convert_unids" as fn;
+
+$iconBase-properties: (
+  size: (
+    xsmall: (
+      --size: fn.fn-calculate-rem(16px),
+    ),
+    small: (
+      --size: fn.fn-calculate-rem(20px),
+    ),
+    normal: (
+      --size: fn.fn-calculate-rem(24px),
+    ),
+    large: (
+      --size: fn.fn-calculate-rem(32px),
+    ),
+    xlarge: (
+      --size: fn.fn-calculate-rem(40px),
+    ),
+  ),
+);

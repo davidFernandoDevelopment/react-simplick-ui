@@ -19,6 +19,7 @@
 
   & > *:nth-of-type(1) {
     font-size: var(--icon-button-font-size);
+    --size: var(--icon-button-font-size);
   }
 
   &--disabled {

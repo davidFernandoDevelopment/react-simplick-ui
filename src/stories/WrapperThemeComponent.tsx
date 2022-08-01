@@ -1,11 +1,15 @@
 interface Props {
-    theme: 'light' | 'dark';
-    children: React.ReactNode;
+    theme?: 'light' | 'dark';
+    children?: React.ReactNode;
+    style?: React.CSSProperties;
 }
 
-export const WrapperThemeComponent = ({ theme, children }: Props) => {
+export const WrapperThemeComponent = ({ theme, children, style }: Props) => {
     return (
-        <div className={`${theme === 'dark' ? 'theme-mode-dark' : ''}`}>
+        <div
+            style={style}
+            className={`${theme === 'dark' ? 'theme-mode-dark' : ''}`}
+        >
             {children}
         </div>
     );

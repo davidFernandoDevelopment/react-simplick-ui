@@ -5,7 +5,7 @@ import { TouchRipple } from './TouchRipple';
 
 
 export default {
-    title: 'Components/Button/TouchRipple',
+    title: 'Components/Buttons',
     component: TouchRipple,
     argTypes: {
         centerRipple: {
@@ -34,6 +34,7 @@ const Template: ComponentStory<typeof TouchRipple> =
         </div>;
 
 export const Basic = Template.bind({});
+Basic.storyName = "TouchRipple";
 Basic.args = {
     centerRipple: false
 };

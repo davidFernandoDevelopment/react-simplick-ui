@@ -16,7 +16,7 @@ body {
   }
   @include mx-from(sm) {
     &.has-modal {
-      padding-right: var(--width-scrollbar);
+      padding-right: var(--width-scrollbar) !important;
     }
   }
 }

@@ -8,7 +8,7 @@ import { WrapperThemeComponent } from '@stories/WrapperThemeComponent';
 
 
 export default {
-    title: 'Components/Button/IconButton',
+    title: 'Components/Buttons/IconButton',
     component: IconButton,
     argTypes: {
         variant: {
@@ -90,6 +90,7 @@ const Template: ComponentStory<typeof IconButton> = (args) => (
 );
 
 export const Basic = Template.bind({});
+Basic.storyName = "IconButton";
 Basic.args = {
     size: 'normal',
     variant: 'circle',

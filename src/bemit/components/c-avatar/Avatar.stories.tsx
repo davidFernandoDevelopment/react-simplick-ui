@@ -7,7 +7,7 @@ import { Avatar } from './Avatar';
 
 
 export default {
-    title: 'Components/Avatar/Avatar',
+    title: 'Components/Avatars/Avatar',
     component: Avatar,
     argTypes: {
         variant: {
@@ -55,6 +55,7 @@ const Template: ComponentStory<typeof Avatar> =
         </WrapperThemeComponent>;
 
 export const Basic = Template.bind({});
+Basic.storyName = "Avatar";
 Basic.args = {
     variant: 'circle',
     size: 'normal',

@@ -1,6 +1,5 @@
-import IconBase from '../IconBase';
-import { IconBaseProps } from '../IconBase';
-import { CommonProps } from '../../../../generic/PolymorphicGeneric';
+import IconBase, { IconBaseProps } from '../base/IconBase';
+import { CommonProps } from '@generic/PolymorphicGeneric';
 
 interface Props extends IconBaseProps, CommonProps { }
 

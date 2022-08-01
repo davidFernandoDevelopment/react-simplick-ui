@@ -1,6 +1,6 @@
-import { CommonProps } from '../../../../generic/PolymorphicGeneric';
-import IconBase, { IconBaseProps } from '../IconBase';
-import './loader.css';
+import { CommonProps } from '@generic/PolymorphicGeneric';
+import IconBase, { IconBaseProps } from '../../base/IconBase';
+
 
 interface LoaderProps extends IconBaseProps, CommonProps { }
 

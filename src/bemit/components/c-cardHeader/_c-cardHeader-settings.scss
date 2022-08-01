@@ -1,0 +1,8 @@
+@use "../../tools/functions/generators" as fn;
+
+$spacers-values: fn.fn-generate-spacers();
+
+$card-header-properties: (
+  gap: fn.fn-property-value-generator($spacers-values, 'gap'),
+  spacing: fn.fn-property-value-generator($spacers-values, 'padding'),
+);

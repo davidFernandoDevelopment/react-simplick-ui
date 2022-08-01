@@ -7,11 +7,11 @@ import { generateComponentClasses } from '@utilities/classForReact';
 import Avatar from '../c-avatar/Avatar';
 
 
-type AvatarGroupProps =
+export type AvatarGroupProps =
     & SystemCAvatarGroupProperties
     & {};
 
-const AvatarGroup: CPolymorphicRef<'div', AvatarGroupProps> = React.forwardRef(<C extends React.ElementType>({
+export const AvatarGroup: CPolymorphicRef<'div', AvatarGroupProps> = React.forwardRef(<C extends React.ElementType>({
     as,
     max = 5,
     total,
