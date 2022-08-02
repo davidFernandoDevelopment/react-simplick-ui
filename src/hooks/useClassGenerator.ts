@@ -11,7 +11,7 @@ interface IProps {
 
 interface IUseClassGenerator {
     p?: string;
-    deps: any[];
+    deps?: any[];
     props: IProps;
     className?: string;
     propertySummary: ComponentPropertySummary;
@@ -19,7 +19,17 @@ interface IUseClassGenerator {
 }
 
 
-export const useClassGenerator = ({ p, deps, props, className, propertySummary, mainClasses = [] }: IUseClassGenerator, ...args: (string | IProps)[]) => {
+export const useClassGenerator = ({
+    p,
+    deps = [],
+    props,
+    className,
+    propertySummary,
+    mainClasses = []
+}: IUseClassGenerator,
+    ...args: (string | IProps)[]
+
+) => {
     const {
         rest,
         restInherit,

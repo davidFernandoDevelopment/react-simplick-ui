@@ -1,0 +1,9 @@
+.SUI-c-listItemIcon {
+  display: inline-flex;
+  min-width: 56px;
+  flex-shrink: 0;
+
+  &--start {
+    margin-top: 8px;
+  }
+}

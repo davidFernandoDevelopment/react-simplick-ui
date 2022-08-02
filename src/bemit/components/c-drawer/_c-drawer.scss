@@ -1,0 +1,115 @@
+@use "../../settings/z-index" as zi;
+
+$transition-drawer: transform 225ms var(--transition-cubic-translate) 0ms;
+
+.SUI-c-drawer {
+  $b: &;
+
+  &__docked {
+    flex: 0 0 auto;
+  }
+
+  &__modal {
+    transition: z-index 0.4s var(--transition-cubic-translate) 0ms,
+      visibility 0.4s var(--transition-cubic-translate) 0ms;
+
+    > .SUI-c-modal__backDrop {
+      transition: opacity 0.3s ease-in-out;
+    }
+  }
+
+  &__paper {
+    z-index: zi.$z-drawer;
+
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    flex: 1 0 auto;
+    position: fixed;
+
+    height: 100%;
+
+    > * {
+      height: 100%;
+    }
+  }
+
+  &__transition {
+    --transition: -100%;
+    transition: $transition-drawer;
+
+    &#{$b}--anchor-left {
+      transform: translateX(var(--transition));
+
+      .is-open & {
+        --transition: 0%;
+      }
+    }
+    &#{$b}--anchor-right {
+      --transition: 100%;
+      transform: translateX(var(--transition));
+
+      .is-open & {
+        --transition: 0%;
+      }
+    }
+    &#{$b}--anchor-top {
+      transform: translateY(var(--transition));
+
+      .is-open & {
+        --transition: 0%;
+      }
+    }
+    &#{$b}--anchor-bottom {
+      --transition: 100%;
+      transform: translateY(var(--transition));
+
+      .is-open & {
+        --transition: 0%;
+      }
+    }
+  }
+
+  &__edge {
+    cursor: move;
+    position: relative;
+
+    &-line {
+      display: block;
+      width: 30px;
+      height: 6px;
+      border-radius: 3px;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--gray-400);
+    }
+    &-line,
+    &-extra {
+      pointer-events: none;
+    }
+  }
+
+  &--anchor-left {
+    left: 0;
+  }
+  &--anchor-right {
+    right: 0;
+  }
+  &--anchor-top {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    max-height: 100%;
+  }
+  &--anchor-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: auto;
+    max-height: 100%;
+  }
+}

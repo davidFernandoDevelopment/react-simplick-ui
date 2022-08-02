@@ -1,0 +1,50 @@
+.SUI-c-listItemButton {
+  position: relative;
+
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  text-align: center;
+  min-width: 0;
+  padding: 0.5rem 1rem;
+
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-100, var(--gray-300));
+    transition: background-color 0.3s ease-in-out;
+  }
+
+  &--disabled {
+    opacity: 0.4;
+  }
+
+  &--dense {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  &--disableGutters {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &--divider {
+    border-bottom: 1px solid var(--gray-400);
+  }
+
+  &--selected {
+    background-color: var(--color-200, var(--gray-300));
+
+    &:hover {
+      background-color: var(--color-300, var(--gray-400));
+    }
+  }
+
+  &--alignItems-start {
+    align-items: start;
+  }
+}

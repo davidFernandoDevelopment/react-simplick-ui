@@ -1,0 +1,42 @@
+$listItem-properties: ();
+
+.c-listItem {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  text-align: left;
+  padding: 0.5rem 1rem;
+
+  $b: &;
+
+  &--disablePadding {
+    padding: 0;
+  }
+
+  &--dense#{$b}:not(disablePadding) {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  &--disableGutters {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  &--alignItems-start {
+    align-items: start;
+  }
+
+  &--secondaryAction {
+    &:not(#{$b}--disablePadding) {
+      padding-right: 3rem;
+    }
+
+    & > .c-listItemButton {
+      padding-right: 3rem;
+    }
+  }
+}

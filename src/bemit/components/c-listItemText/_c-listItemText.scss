@@ -1,0 +1,15 @@
+.SUI-c-listItemText {
+  min-width: 0;
+  flex: 1 1 auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: left;
+
+  &--inset {
+    padding-left: 56px;
+  }
+  &--multiline {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+}
