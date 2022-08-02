@@ -1,6 +1,6 @@
 $listItem-properties: ();
 
-.c-listItem {
+.SUI-c-listItem {
   position: relative;
 
   display: flex;
@@ -35,7 +35,7 @@ $listItem-properties: ();
       padding-right: 3rem;
     }
 
-    & > .c-listItemButton {
+    & > .SUI-c-listItemButton {
       padding-right: 3rem;
     }
   }

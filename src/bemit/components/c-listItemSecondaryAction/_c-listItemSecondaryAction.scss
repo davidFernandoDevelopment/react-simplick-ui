@@ -1,6 +1,12 @@
 .SUI-c-listItemSecondaryAction {
+  pointer-events: all;
   position: absolute;
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+
+  .SUI-c-listItemButton--disabled + & {
+    opacity: 0.4;
+    pointer-events: none;
+  }
 }

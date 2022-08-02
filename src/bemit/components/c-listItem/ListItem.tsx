@@ -10,11 +10,11 @@ import ListItemSecondaryAction from '../c-listItemSecondaryAction/ListItemSecond
 
 
 
-type ListItemProps =
+export type ListItemProps =
     & SystemCListItemProperties
     & {};
 
-const ListItem: CPolymorphicRef<'li', ListItemProps> = React.forwardRef(function ListItem<C extends React.ElementType>({
+export const ListItem: CPolymorphicRef<'li', ListItemProps> = React.forwardRef(function ListItem<C extends React.ElementType>({
     as,
     style,
     children,
@@ -44,10 +44,10 @@ const ListItem: CPolymorphicRef<'li', ListItemProps> = React.forwardRef(function
         []
     );
     const arrayClasses = [
-        'c-listItem',
+        'SUI-c-listItem',
         className,
         generatedClasses,
-        { 'c-listItem--secondaryAction': secondaryAction }
+        { 'SUI-c-listItem--secondaryAction': secondaryAction }
     ];
     const classes = classNames(arrayClasses);
 

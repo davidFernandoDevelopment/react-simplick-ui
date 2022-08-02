@@ -7100,7 +7100,7 @@ td {
   gap: 1.25rem;
 }
 
-.SUI_c-list {
+.SUI-c-list {
   position: relative;
   margin: 0;
   padding: 0;
@@ -7108,14 +7108,14 @@ td {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
-.SUI_c-list--disablePadding {
+.SUI-c-list--disablePadding {
   padding: 0;
 }
-.SUI_c-list--subheader {
+.SUI-c-list--subheader {
   padding-top: 0;
 }
 
-.c-listItem {
+.SUI-c-listItem {
   position: relative;
   display: flex;
   align-items: center;
@@ -7124,24 +7124,24 @@ td {
   text-align: left;
   padding: 0.5rem 1rem;
 }
-.c-listItem--disablePadding {
+.SUI-c-listItem--disablePadding {
   padding: 0;
 }
-.c-listItem--dense.c-listItem:not(disablePadding) {
+.SUI-c-listItem--dense.SUI-c-listItem:not(disablePadding) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
-.c-listItem--disableGutters {
+.SUI-c-listItem--disableGutters {
   padding-left: 0;
   padding-right: 0;
 }
-.c-listItem--alignItems-start {
+.SUI-c-listItem--alignItems-start {
   align-items: start;
 }
-.c-listItem--secondaryAction:not(.c-listItem--disablePadding) {
+.SUI-c-listItem--secondaryAction:not(.SUI-c-listItem--disablePadding) {
   padding-right: 3rem;
 }
-.c-listItem--secondaryAction > .c-listItemButton {
+.SUI-c-listItem--secondaryAction > .SUI-c-listItemButton {
   padding-right: 3rem;
 }
 
@@ -7152,6 +7152,21 @@ td {
 }
 .SUI-c-listItemIcon--start {
   margin-top: 8px;
+}
+
+.SUI-c-listItemText {
+  min-width: 0;
+  flex: 1 1 auto;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+.SUI-c-listItemText--inset {
+  padding-left: 56px;
+}
+.SUI-c-listItemText--multiline {
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .SUI-c-listSubHeader {
@@ -7215,6 +7230,9 @@ td {
   padding-left: 0;
   padding-right: 0;
 }
+.SUI-c-listItemButton--disablePadding {
+  padding: 0;
+}
 .SUI-c-listItemButton--divider {
   border-bottom: 1px solid var(--gray-400);
 }
@@ -7229,10 +7247,15 @@ td {
 }
 
 .SUI-c-listItemSecondaryAction {
+  pointer-events: all;
   position: absolute;
   top: 50%;
   right: 1rem;
   transform: translateY(-50%);
+}
+.SUI-c-listItemButton--disabled + .SUI-c-listItemSecondaryAction {
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .SUI-u-d-none {

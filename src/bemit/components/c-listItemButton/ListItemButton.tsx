@@ -8,11 +8,11 @@ import { ListContext } from '../c-list/List';
 import ButtonBase from '../c-buttonBase/ButtonBase';
 
 
-type ListItemButtonProps =
+export type ListItemButtonProps =
     & SystemCListItemButtonProperties
     & {};
 
-const ListItemButton: CPolymorphicRef<'div', ListItemButtonProps> = React.forwardRef(function ListItemButton<C extends React.ElementType>({
+export const ListItemButton: CPolymorphicRef<'div', ListItemButtonProps> = React.forwardRef(function ListItemButton<C extends React.ElementType>({
     as,
     style,
     children,
