@@ -648,11 +648,7 @@ export const ListSubHeaderPropertySummary: ComponentPropertySummary = {
 
 const LIST_ITEM_SECONDARY_ACTION = [] as const;
 type ListItemSecondaryActionPropertiesValues = {};
-type ListItemSecondaryActionPropertiesBasic = {
-    inset: boolean;
-    disableSticky: boolean;
-    disableGutters: boolean;
-};
+type ListItemSecondaryActionPropertiesBasic = {};
 const LIST_ITEM_SECONDARY_ACTION_DEFAULTS: Partial<ListItemSecondaryActionProperties> = {};
 const LIST_ITEM_SECONDARY_ACTION_UTILITIES: any[] = [];
 export type ListItemSecondaryActionProperties = ListItemSecondaryActionPropertiesValues & ListItemSecondaryActionPropertiesBasic;

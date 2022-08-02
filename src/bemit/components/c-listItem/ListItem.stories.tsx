@@ -34,7 +34,7 @@ export default {
                 defaultValue: { summary: false }
             },
             control: "boolean",
-            description: " Remove horizontal padding."
+            description: "Remove horizontal padding."
         },
         disablePadding: {
             table: {
@@ -77,7 +77,9 @@ const Template: ComponentStory<typeof ListItem> =
                         src='https://erp-sanchez-images.s3.us-east-2.amazonaws.com/Collaborators/6213bce7bad02124df7ad8b1-1645464118361.jpg'
                     />
                 </ListItemAvatar>
-                <ListItemText>
+                <ListItemText
+                
+                >
                     Item
                 </ListItemText>
             </ListItem>

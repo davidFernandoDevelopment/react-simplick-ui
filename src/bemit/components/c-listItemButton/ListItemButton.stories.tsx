@@ -71,7 +71,7 @@ export default {
         },
         secondaryAction: {
             table: {
-                category: "Inherit from ListItem",
+                category: "ListSubHeader component properties",
                 type: { summary: "boolean" },
                 defaultValue: { summary: "<IconButton edge='end'><Notification /></IconButton>" }
             },

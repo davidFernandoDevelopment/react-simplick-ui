@@ -5,7 +5,7 @@ import { SystemCListProperties, ListPropertySummary } from '@generic/systemCompo
 
 import { useClassGenerator } from '@hooks/useClassGenerator';
 
-interface IList {
+export interface IList {
     dense?: boolean;
     alignItems?: 'start' | 'center';
 }
@@ -16,7 +16,7 @@ export type ListProps =
     & SystemCListProperties
     & {};
 
-const List: CPolymorphicRef<'ul', ListProps> = React.forwardRef(function List<C extends React.ElementType>({
+export const List: CPolymorphicRef<'ul', ListProps> = React.forwardRef(function List<C extends React.ElementType>({
     as,
     style,
     children,

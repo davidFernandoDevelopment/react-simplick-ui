@@ -35,6 +35,7 @@ export const Dialog: CPolymorphicRef<'div', DialogProps> = React.forwardRef(<C e
             p={p}
             as={as}
             ref={ref}
+            onClose={onClose}
             className='SUI-c-dialog'
             disableAnimationContent
             {...rest as any}
