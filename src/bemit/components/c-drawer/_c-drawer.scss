@@ -73,6 +73,7 @@ $transition-drawer: transform 225ms var(--transition-cubic-translate) 0ms;
   &__edge {
     cursor: move;
     position: relative;
+    min-height: 48px;
 
     &-line {
       display: block;

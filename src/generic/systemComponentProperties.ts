@@ -669,7 +669,6 @@ type DrawerPropertiesBasic = {
     variant: 'permanent' | 'temporary' | 'persistent';
     anchor: 'top' | 'bottom' | 'left' | 'right';
     swipeableEdge: boolean;
-    swipeableEdgeIcon: React.ReactNode;
     swipeableEdgeExtra: React.ReactNode;
     paperProps: SystemStyleProperties;
 };

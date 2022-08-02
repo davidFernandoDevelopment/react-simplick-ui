@@ -7,17 +7,18 @@ import { useSwipeable } from './useSwipeable';
 import { PropsRef, CPolymorphicRef, PolymorphicRef } from '@generic/PolymorphicGeneric';
 import { DrawerPropertySummary, SystemCDrawerProperties, DrawerProperties } from '@generic/systemComponentProperties';
 import { useClassGenerator } from '@hooks/useClassGenerator';
+import Divider from '../c-divider/Divider';
 
 
 
-type DrawerProps =
+export type DrawerProps =
     & SystemCDrawerProperties
     & Omit<ModalProps, keyof DrawerProperties>
     & {};
 
 
 
-const Drawer: CPolymorphicRef<'div', DrawerProps> = React.forwardRef(function Drawer<C extends React.ElementType>({
+export const Drawer: CPolymorphicRef<'div', DrawerProps> = React.forwardRef(function Drawer<C extends React.ElementType>({
     as,
     style,
     children,
@@ -55,16 +56,19 @@ const Drawer: CPolymorphicRef<'div', DrawerProps> = React.forwardRef(function Dr
     );
 
     const edge = swipeableEdge && (
-        <div className={`${p}__edge`}>
-            <span className={`${p}__edge-line`}></span>
-            {
-                swipeableEdgeExtra && (
-                    <div className={`${p}__edge-extra`}>
-                        {swipeableEdgeExtra}
-                    </div>
-                )
-            }
-        </div>
+        <>
+            <div className={`${p}__edge`}>
+                <span className={`${p}__edge-line`}></span>
+                {
+                    swipeableEdgeExtra && (
+                        <div className={`${p}__edge-extra`}>
+                            {swipeableEdgeExtra}
+                        </div>
+                    )
+                }
+            </div>
+            <Divider />
+        </>
     );
 
     const DrawerPaper = (
@@ -75,8 +79,9 @@ const Drawer: CPolymorphicRef<'div', DrawerProps> = React.forwardRef(function Dr
             className={`${classesPaper} ${variant !== 'permanent' && classesTransition}`}
             sx={paperProps}
         >
-            {edge}
+            {anchor === "bottom" && edge}
             {children}
+            {anchor === "top" && edge}
         </Paper >
     );
 

@@ -51,7 +51,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
     }, []);
     const handleTouchStart = useCallback((e: TouchEvent) => {
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).classList.value.includes('c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).classList.value.includes('SUI-c-drawer__edge')) return;
 
 
         let currentX = e.touches[0].pageX;
@@ -68,7 +68,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
     const handleTouchMove = useCallback((e: TouchEvent) => {
         if (!touchSurface.current || !touchState.isSwizing) return;
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).classList.value.includes('c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).classList.value.includes('SUI-c-drawer__edge')) return;
 
         let touches: TouchList = e.touches;
         let horizontalSwipe = isHorizontal(anchor);
@@ -86,7 +86,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
     const handleTouchEnd = useCallback((e: TouchEvent) => {
         if (!touchState.isSwizing) return;
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).classList.value.includes('c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).classList.value.includes('SUI-c-drawer__edge')) return;
 
 
         const horizontal = isHorizontal(anchor);
@@ -110,7 +110,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
         e.preventDefault();
 
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).closest('.c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).closest('.SUI-c-drawer__edge')) return;
 
 
         let currentX = e.pageX;
@@ -130,7 +130,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
 
         if (!touchState.isSwizing) return;
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).classList.value.includes('c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).classList.value.includes('SUI-c-drawer__edge')) return;
 
 
         let horizontalSwipe = isHorizontal(anchor);
@@ -149,7 +149,7 @@ export const useSwipeable = (anchor: Anchor, onClose: () => any, open?: boolean,
 
         if (!touchState.isSwizing) return;
         if (!touchSurface.current?.contains(e.target as HTMLElement)) return;
-        if (swipeableEdge && !(e.target as HTMLElement).classList.value.includes('c-drawer__edge')) return;
+        if (swipeableEdge && !isHorizontal(anchor) && !(e.target as HTMLElement).classList.value.includes('SUI-c-drawer__edge')) return;
 
 
         const horizontal = isHorizontal(anchor);

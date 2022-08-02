@@ -1,0 +1,38 @@
+@use "../../tools/mixins/generators" as mx;
+@use 'c-loaderButton-settings' as *;
+
+$transition: 0.6s ease-in-out;
+
+.SUI-c-loaderButton {
+  $b: &;
+
+  &__loader {
+    opacity: 0;
+
+    transition: background-color #{$transition}, color #{$transition},
+      opacity #{$transition};
+
+    & > * {
+      font-size: var(--button-icon-font-size);
+    }
+  }
+
+  &--loading#{$b}[class*='position-center'] {
+    color: transparent !important;
+  }
+
+  @at-root {
+    @include mx.mx-generate-map-properties(
+      $loader-button-styles-by-variant,
+      $base: '.SUI-c-button-',
+      $sufix: ' .SUI-c-loaderButton__loader',
+      $prefix: '.SUI-c-loaderButton--loading'
+    );
+    @include mx.mx-generate-map-properties(
+      $loader-button-styles,
+      $base: '.SUI-c-loaderButton-',
+      $sufix: ' .SUI-c-loaderButton__loader',
+      $prefix: '.SUI-c-loaderButton--loading'
+    );
+  }
+}

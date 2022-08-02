@@ -1,0 +1,40 @@
+$loader-button-styles-by-variant: (
+  variant: (
+    default: (
+      color: var(--color-white),
+      opacity: 1,
+    ),
+    ghost: (
+      background-color: transparent,
+      color: var(--gray-400),
+      opacity: 1,
+    ),
+    link: (
+      background-color: transparent,
+      color: var(--gray-400),
+      opacity: 1,
+    ),
+    light: (
+      opacity: 1,
+      background-color: transparent,
+      color: var(--gray-400),
+    ),
+  ),
+);
+
+$loader-button-styles: (
+  position: (
+    start: (),
+    center: (
+      position: absolute,
+      width: 100%,
+      height: 100%,
+      padding: var(--padding),
+      display: flex,
+      gap: 1rem,
+      align-items: center,
+      justify-content: center,
+    ),
+    end: (),
+  ),
+);
