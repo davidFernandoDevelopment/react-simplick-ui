@@ -1,0 +1,93 @@
+@use "../../settings/z-index" as set;
+
+$transition-popper: transform-origin 225ms
+    var(--transition-cubic-transform-origin),
+  opacity 225ms var(--transition-cubic-transform-origin) 0ms,
+  transform 225ms var(--transition-cubic-transform-origin) 0ms;
+
+.SUI-c-popper {
+  $b: &;
+
+  z-index: set.$z-popover;
+
+  &__paper {
+    min-width: 1rem;
+    min-height: 1rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: none;
+  }
+
+  &__arrow {
+    #{$b}[class*='top'] & {
+      margin-bottom: -0.9em;
+      bottom: 0;
+    }
+    #{$b}[class*='bottom'] & {
+      margin-top: -0.9em;
+      top: 0;
+    }
+    #{$b}[class*='left'] & {
+      margin-right: -0.9em;
+      right: 0;
+    }
+    #{$b}[class*='right'] & {
+      margin-left: -0.9em;
+      left: 0;
+    }
+
+    &-wrapper {
+      #{$b}[class*='top'] & {
+        margin-top: -6px;
+      }
+      #{$b}[class*='bottom'] & {
+        margin-top: 6px;
+      }
+      #{$b}[class*='left'] & {
+        margin-left: -6px;
+      }
+      #{$b}[class*='right'] & {
+        margin-left: 6px;
+      }
+    }
+    z-index: set.$z-popover;
+    position: absolute;
+    font-size: 7px;
+
+    &::before {
+      content: '';
+      display: block;
+      border-style: solid;
+
+      #{$b}[class*='top'] & {
+        border-width: 1em 1em 0;
+        border-color: white transparent transparent;
+      }
+      #{$b}[class*='bottom'] & {
+        border-width: 0 1em 1em;
+        border-color: transparent transparent white;
+      }
+      #{$b}[class*='left'] & {
+        border-width: 1em 0 1em 1em;
+        border-color: transparent transparent transparent white;
+      }
+      #{$b}[class*='right'] & {
+        border-width: 1em 1em 1em 0;
+        border-color: transparent white transparent transparent;
+      }
+    }
+  }
+
+  &__transition {
+    // transform-origin: none;
+    transform: scale(0);
+    opacity: 0;
+    transition: $transition-popper;
+
+    .is-open & {
+      transform: scale(1);
+      opacity: 1;
+      transition: $transition-popper;
+    }
+  }
+}

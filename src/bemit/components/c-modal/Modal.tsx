@@ -70,10 +70,8 @@ const Modal: CPolymorphicRef<'div', ModalProps> = React.forwardRef(function Moda
     const handleBackdropClick = (event: MouseEvent) => {
 
         if (event.target !== event.currentTarget) {
-            console.log('first');
             return;
         }
-        console.log({ onClose, staticBackdrop });
         if (onClose && !staticBackdrop) {
             onClose(event, 'backdropClick');
         }
